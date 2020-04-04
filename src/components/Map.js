@@ -7,7 +7,7 @@ import {
   SettingFilled,
   SmileOutlined,
   SyncOutlined,
-  LoadingOutlined
+  LoadingOutlined,
 } from '@ant-design/icons';
 
 import Pins from './Pins';
@@ -35,8 +35,8 @@ export default function Map() {
             [151.419618, -33.30721],
             [151.341871, -33.42695],
             [151.081349, -33.772771],
-            [151.206913, -33.87364]
-          ]
+            [151.206913, -33.87364],
+          ],
         },
         {
           name: 'southern-route',
@@ -49,15 +49,15 @@ export default function Map() {
             [151.419618, -33.30721],
             [151.341871, -33.42695],
             [151.081349, -33.772771],
-            [151.206913, -33.87364]
-          ]
-        }
+            [151.206913, -33.87364],
+          ],
+        },
       ],
       getWidth: (data) => 7,
       getColor: (data) => data.color,
       widthMinPixels: 7,
-      rounded: true
-    })
+      rounded: true,
+    }),
   ];
 
   const onPinClicked = (city) => console.log(city);
@@ -70,7 +70,7 @@ export default function Map() {
           latitude: -33.87364,
           zoom: 7,
           bearing: 0,
-          pitch: 0
+          pitch: 0,
         }}
         height='100%'
         width='100%'
