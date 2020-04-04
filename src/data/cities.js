@@ -2,48 +2,48 @@ export const CITIES = [
   {
     city: 'Port Macquarie',
     latitude: -31.4307,
-    longitude: 152.90633
+    longitude: 152.90633,
   },
   {
     city: 'Taree',
     latitude: -31.911209,
-    longitude: 152.46022
+    longitude: 152.46022,
   },
   {
     city: 'Newcastle',
     latitude: -32.92667,
-    longitude: 151.780014
+    longitude: 151.780014,
   },
   {
     city: 'Lake Macquarie',
     latitude: -32.960328,
-    longitude: 151.623532
+    longitude: 151.623532,
   },
   {
     city: 'Tuggerah',
     latitude: -33.30721,
-    longitude: 151.419618
+    longitude: 151.419618,
   },
   {
     city: 'Gosford',
     latitude: -33.42695,
-    longitude: 151.341871
+    longitude: 151.341871,
   },
   {
     city: 'Epping',
     latitude: -33.772771,
-    longitude: 151.081349
+    longitude: 151.081349,
   },
   {
     city: 'Sydney',
     latitude: -33.87364,
-    longitude: 151.206913
+    longitude: 151.206913,
   },
   {
     city: 'Parkes',
     latitude: -33.137897,
-    longitude: 148.17485
-  }
+    longitude: 148.17485,
+  },
   /*   {
     city: 'Orange',
     latitude: 30.3072,

@@ -2,17 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Map from './components/Map';
-import Path from './components/Path';
-import MapWithMarkers from './components/MapWithMarkers';
 import ControlPanel from './components/ControlPanel';
 
 export default function App() {
   return (
     <StyledMain>
       <ControlPanel />
-      {/* <Map /> */}
-      {/* <Path /> */}
-      <MapWithMarkers />
+      <div style={{ position: 'relative', height: 600 }}>
+        <Map />
+      </div>
     </StyledMain>
   );
 }
