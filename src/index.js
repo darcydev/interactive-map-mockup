@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import App from './App';
 
 import './index.css';
 import 'antd/dist/antd.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 ReactDOM.render(
   <React.StrictMode>
