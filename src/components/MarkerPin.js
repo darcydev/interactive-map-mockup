@@ -6,8 +6,6 @@ const PIN_ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-1
   C20.1,15.8,20.2,15.8,20.2,15.7z`;
 
 export default function MarkerPin({ size, city }) {
-  const onMarkerClicked = (city) => console.log(city);
-
   return (
     <Marker longitude={city.longitude} latitude={city.latitude}>
       <svg
@@ -19,7 +17,6 @@ export default function MarkerPin({ size, city }) {
           stroke: 'none',
           transform: `translate(${-size / 2}px,${-size}px)`,
         }}
-        onClick={() => onMarkerClicked(city)}
       >
         <path d={PIN_ICON} />
       </svg>
