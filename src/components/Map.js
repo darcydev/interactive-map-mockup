@@ -6,7 +6,7 @@ import { Select } from 'antd';
 
 import MarkerPin from './MarkerPin';
 import { layers } from './Layer';
-import ProgressBar from './ProgressBar';
+import Slider from './Slider';
 import { timeToString } from '../helpers/timeToString';
 import { journeyTimes } from '../data/journeyTimes';
 import { CITIES } from '../data/cities';
@@ -120,20 +120,12 @@ export default function Map() {
           </StyledSelectBarContainer>
         </StyledFlexContainer>
         <div>
-          <StyledSlider>
-            <StyledSliderHeadings>
-              <StyledH4>Before</StyledH4>
-              <h3>{beforeString}</h3>
-            </StyledSliderHeadings>
-            <ProgressBar value={100} />
-          </StyledSlider>
-          <StyledSlider>
-            <StyledSliderHeadings>
-              <StyledH4>After</StyledH4>
-              <h3>{afterString}</h3>
-            </StyledSliderHeadings>
-            <ProgressBar value={timeReduction ? timeReduction : 100} />
-          </StyledSlider>
+          <Slider leftText='Before' rightText={beforeString} progress={100} />
+          <Slider
+            leftText='After'
+            rightText={afterString}
+            progress={timeReduction ? timeReduction : 100}
+          />
         </div>
       </>
       <div style={{ position: 'relative', height: 600 }}>
@@ -185,27 +177,4 @@ const StyledSelect = styled(Select)`
 const StyledOption = styled(Option)`
   font-size: 18px;
   background: red;
-`;
-
-const StyledSlider = styled.div`
-  padding: 10px 0;
-`;
-
-const StyledSliderHeadings = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const StyledH4 = styled.h4`
-  align-self: center;
-  padding-bottom: 0px;
-`;
-
-const StyledMarkerSpan = styled.span`
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  border: 1px solid red;
 `;
