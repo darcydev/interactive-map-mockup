@@ -5,6 +5,13 @@ const Sydney_LakeMacquarie = [3, 1.1];
 const Sydney_Tuggerah = [2.6, 0.5];
 const Sydney_Gosford = [1.5, 0.3];
 const Sydney_Epping = [0.4, 0.1];
+const Sydney_Sutherland = [0.2, 0.05];
+const Sydney_Campbelltown = [0.3, 0.1];
+const Sydney_Wollongong = [1.5, 0.3];
+const Sydney_Dapto = [1.6, 0.4];
+const Sydney_Shellharbour = [2, 1];
+const Sydney_Kiama = [2.2, 1.1];
+const Sydney_Bombdaberry = [3.1, 1.5];
 const PortMacquarie_Taree = [0.4, 0.1];
 const PortMacquarie_Newcastle = [1.1, 0.3];
 const PortMacquarie_LakeMacquarie = [1.6, 0.45];
@@ -16,6 +23,27 @@ const Taree_LakeMacquarie = [2.1, 0.5];
 const Taree_Tuggerah = [2.4, 1.3];
 const Taree_Gosford = [3.1, 1.5];
 const Taree_Epping = [4, 2.1];
+const Sutherland_Campbelltown = [0.3, 0.1];
+const Sutherland_Wollongong = [1, 0.3];
+const Sutherland_Dapto = [1.3, 0.4];
+const Sutherland_Shellharbour = [2, 1];
+const Sutherland_Kiama = [2.1, 1.1];
+const Sutherland_Bomdaberry = [3, 1.4];
+const Campbelltown_Wollongong = [0.5, 0.2];
+const Campbelltown_Dapto = [1, 0.3];
+const Campbelltown_Shellharbour = [1.2, 0.5];
+const Campbelltown_Kiama = [1.5, 1.2];
+const Campbelltown_Bomdaberry = [2.4, 1.5];
+const Wollongong_Dapto = [0.2, 0.1];
+const Wollongong_Shellharbour = [0.3, 0.15];
+const Wollongong_Kiama = [0.4, 0.2];
+const Wollongong_Bomdaberry = [1.1, 0.35];
+const Dapto_Shellharbour = [0.2, 0.1];
+const Dapto_Kiama = [0.3, 0.15];
+const Dapto_Bomdaberry = [0.5, 0.25];
+const Shellharbour_Kiama = [0.3, 0.15];
+const Shellharbour_Bomdaberry = [0.35, 0.2];
+const Kiama_Bomdaberry = [0.25, 0.15];
 
 export const journeyTimes = {
   'Port Macquarie': {
@@ -94,6 +122,13 @@ export const journeyTimes = {
     Bathurst: [3.1, 1.1],
     Lithgow: [2.3, 0.6],
     Katoomba: [1.3, 0.2],
+    Sutherland: Sydney_Sutherland,
+    Campbelltown: Sydney_Campbelltown,
+    Wollongong: Sydney_Wollongong,
+    Dapto: Sydney_Dapto,
+    Shellharbour: Sydney_Shellharbour,
+    Kiama: Sydney_Kiama,
+    Bomdaberry: Sydney_Bombdaberry,
   },
   Parkes: {
     Orange: [1.2, 0.2],
@@ -129,5 +164,68 @@ export const journeyTimes = {
     Bathurst: [1.9, 0.8],
     Ligthow: [0.7, 0.2],
     Sydney: [1.3, 0.2],
+  },
+  Sutherland: {
+    Sydney: Sydney_Sutherland,
+    Campbelltown: Sutherland_Campbelltown,
+    Wollongong: Sutherland_Wollongong,
+    Dapto: Sutherland_Dapto,
+    Shellharbour: Sutherland_Shellharbour,
+    Kiama: Sutherland_Kiama,
+    Bomdaberry: Sutherland_Bomdaberry,
+  },
+  Campbelltown: {
+    Sydney: Sydney_Campbelltown,
+    Sutherland: Sutherland_Campbelltown,
+    Wollongong: Campbelltown_Wollongong,
+    Dapto: Campbelltown_Dapto,
+    Shellharbour: Campbelltown_Shellharbour,
+    Kiama: Campbelltown_Kiama,
+    Bomdaberry: Campbelltown_Bomdaberry,
+  },
+  Wollongong: {
+    Sydney: Sydney_Wollongong,
+    Sutherland: Sutherland_Wollongong,
+    Campbelltown: Campbelltown_Wollongong,
+    Dapto: Wollongong_Dapto,
+    Shellharbour: Wollongong_Shellharbour,
+    Kiama: Wollongong_Kiama,
+    Bomdaberry: Wollongong_Bomdaberry,
+  },
+  Dapto: {
+    Sydney: Sydney_Dapto,
+    Sutherland: Sutherland_Dapto,
+    Campbelltown: Campbelltown_Dapto,
+    Wollongong: Wollongong_Dapto,
+    Shellharbour: Dapto_Shellharbour,
+    Kiama: Dapto_Kiama,
+    Bomdaberry: Dapto_Bomdaberry,
+  },
+  Shellharbour: {
+    Sydney: Sydney_Shellharbour,
+    Sutherland: Sutherland_Shellharbour,
+    Campbelltown: Campbelltown_Shellharbour,
+    Wollongong: Wollongong_Shellharbour,
+    Dapto: Dapto_Shellharbour,
+    Kiama: Shellharbour_Kiama,
+    Bomdaberry: Shellharbour_Bomdaberry,
+  },
+  Kiama: {
+    Sydney: Sydney_Kiama,
+    Sutherland: Sutherland_Kiama,
+    Campbelltown: Campbelltown_Kiama,
+    Wollongong: Wollongong_Kiama,
+    Dapto: Dapto_Kiama,
+    Shellharbour: Shellharbour_Kiama,
+    Bomdaberry: Kiama_Bomdaberry,
+  },
+  Bomdaberry: {
+    Sydney: Sydney_Bombdaberry,
+    Sutherland: Sutherland_Bomdaberry,
+    Campbelltown: Campbelltown_Bomdaberry,
+    Wollongong: Wollongong_Bomdaberry,
+    Dapto: Dapto_Bomdaberry,
+    Shellharbour: Shellharbour_Bomdaberry,
+    Kiama: Kiama_Bomdaberry,
   },
 };

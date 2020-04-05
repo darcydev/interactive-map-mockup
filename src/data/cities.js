@@ -71,6 +71,18 @@ export const CITIES = [
     routes: ['central-west-route'],
   },
   {
+    city: 'Sutherland',
+    latitude: -34.0333,
+    longitude: 151.05,
+    routes: ['southern-route'],
+  },
+  {
+    city: 'Campbelltown',
+    latitude: -34.064999,
+    longitude: 150.814163,
+    routes: ['southern-route'],
+  },
+  {
     city: 'Wollongong',
     latitude: -34.424179,
     longitude: 150.893555,

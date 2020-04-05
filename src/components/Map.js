@@ -58,22 +58,19 @@ const cityWithNearestLongAndLat = (latClicked, longClicked) => {
 export default function Map() {
   const [fromLocation, setFromLocation] = useState('');
   const [toLocation, setToLocation] = useState('');
-  const [tooltip, setTooltip] = useState({
-    name: '',
-    coordinates: [],
-  });
 
   let beforeTime, afterTime, beforeString, afterString, timeReduction;
 
-  if (fromLocation && toLocation) {
+  if (fromLocation && toLocation && fromLocation !== toLocation) {
     if (!journeyTimes[fromLocation][toLocation])
-      throw new Error('Route not found');
-
-    beforeTime = journeyTimes[fromLocation][toLocation][0];
-    afterTime = journeyTimes[fromLocation][toLocation][1];
-    beforeString = timeToString(beforeTime);
-    afterString = timeToString(afterTime);
-    timeReduction = Math.round((afterTime / beforeTime) * 100);
+      console.error('Route not found');
+    else {
+      beforeTime = journeyTimes[fromLocation][toLocation][0];
+      afterTime = journeyTimes[fromLocation][toLocation][1];
+      beforeString = timeToString(beforeTime);
+      afterString = timeToString(afterTime);
+      timeReduction = Math.round((afterTime / beforeTime) * 100);
+    }
   }
 
   const onMapClicked = (event) => {
@@ -93,8 +90,8 @@ export default function Map() {
 
   return (
     <>
-      <div style={{ padding: '20px 40px' }}>
-        <StyledFlexContainer>
+      <StyledControlPanel>
+        <div className='flex-container'>
           <StyledSelectBarContainer>
             <h5 style={{ textAlign: 'left' }}>FROM:</h5>
             <StyledSelect
@@ -116,7 +113,7 @@ export default function Map() {
                 : null}
             </StyledSelect>
           </StyledSelectBarContainer>
-        </StyledFlexContainer>
+        </div>
         <div>
           <Slider leftText='Before' rightText={beforeString} progress={100} />
           <Slider
@@ -125,8 +122,8 @@ export default function Map() {
             progress={timeReduction ? timeReduction : 100}
           />
         </div>
-      </div>
-      <div style={{ position: 'relative', height: 600 }}>
+      </StyledControlPanel>
+      <div style={{ position: 'relative', height: '100vh' }}>
         <DeckGL
           initialViewState={{
             latitude: -33.87364,
@@ -176,6 +173,8 @@ export default function Map() {
                     [150.86775, -34.57912],
                     [150.79474, -34.49337],
                     [150.893555, -34.424179],
+                    [150.814163, -34.064999],
+                    [151.05, -34.0333],
                     [151.206913, -33.87364],
                   ],
                 },
@@ -204,9 +203,17 @@ export default function Map() {
   );
 }
 
-const StyledFlexContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+const StyledControlPanel = styled.div`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 450px;
+  z-index: 9;
+
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 const StyledSelectBarContainer = styled.div`
@@ -226,8 +233,4 @@ const StyledSelect = styled(Select)`
 const StyledOption = styled(Option)`
   font-size: 18px;
   background: red;
-`;
-
-const StyledTooltip = styled.div`
-  border: 2px solid black;
 `;
