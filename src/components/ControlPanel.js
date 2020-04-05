@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { Select } from 'antd';
 
 import ProgressBar from './ProgressBar';
 import { timeToString } from '../helpers/timeToString';
 import { journeyTimes } from '../data/journeyTimes';
+import RouteContext from '../context/route-context';
 
 const { Option } = Select;
 
@@ -23,6 +24,13 @@ const convertKeysToOption = (objKey) =>
 export default function ControlPanel() {
   const [fromLocation, setFromLocation] = useState('');
   const [toLocation, setToLocation] = useState('');
+  const context = useContext(RouteContext);
+
+  console.log(context);
+
+  useEffect(() => {
+    console.log(10);
+  }, [context]);
 
   let beforeTime, afterTime, beforeString, afterString, timeReduction;
 
@@ -39,12 +47,15 @@ export default function ControlPanel() {
   }
 
   const FROM_LOCATIONS_OPTIONS_MARKUP = convertKeysToOption(journeyTimes);
-  const TO_LOCATIONS_OPTIONS_MARKUP = fromLocation
+
+  console.log(journeyTimes[fromLocation]);
+
+  /*   const TO_LOCATIONS_OPTIONS_MARKUP = fromLocation
     ? convertKeysToOption(journeyTimes[fromLocation])
-    : null;
+    : null; */
 
   return (
-    <div>
+    <>
       <StyledFlexContainer>
         <StyledSelectBarContainer>
           <h5 style={{ textAlign: 'left' }}>FROM:</h5>
@@ -62,7 +73,7 @@ export default function ControlPanel() {
             defaultValue='SELECT LOCATION'
             onChange={(value) => setToLocation(value)}
           >
-            {TO_LOCATIONS_OPTIONS_MARKUP}
+            {/* {TO_LOCATIONS_OPTIONS_MARKUP} */}
           </StyledSelect>
         </StyledSelectBarContainer>
       </StyledFlexContainer>
@@ -82,7 +93,7 @@ export default function ControlPanel() {
           <ProgressBar value={timeReduction ? timeReduction : 100} />
         </StyledSlider>
       </div>
-    </div>
+    </>
   );
 }
 
