@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import DeckGL from '@deck.gl/react';
-import { StaticMap } from 'react-map-gl';
+import { PathLayer } from '@deck.gl/layers';
+import { StaticMap, Popup } from 'react-map-gl';
 import styled from 'styled-components';
 import { Select } from 'antd';
 
 import MarkerPin from './MarkerPin';
-import { layers } from './Layer';
 import Slider from './Slider';
 import { timeToString } from '../helpers/timeToString';
 import { journeyTimes } from '../data/journeyTimes';
@@ -58,25 +58,23 @@ const cityWithNearestLongAndLat = (latClicked, longClicked) => {
 export default function Map() {
   const [fromLocation, setFromLocation] = useState('');
   const [toLocation, setToLocation] = useState('');
+  const [tooltip, setTooltip] = useState({
+    name: '',
+    coordinates: [],
+  });
 
   let beforeTime, afterTime, beforeString, afterString, timeReduction;
 
   if (fromLocation && toLocation) {
-    const ROUTE = journeyTimes[fromLocation][toLocation];
+    if (!journeyTimes[fromLocation][toLocation])
+      throw new Error('Route not found');
 
-    if (ROUTE) {
-      beforeTime = ROUTE[0];
-      afterTime = ROUTE[1];
-      beforeString = timeToString(beforeTime);
-      afterString = timeToString(afterTime);
-      timeReduction = Math.round((afterTime / beforeTime) * 100);
-    }
+    beforeTime = journeyTimes[fromLocation][toLocation][0];
+    afterTime = journeyTimes[fromLocation][toLocation][1];
+    beforeString = timeToString(beforeTime);
+    afterString = timeToString(afterTime);
+    timeReduction = Math.round((afterTime / beforeTime) * 100);
   }
-
-  const FROM_LOCATIONS_OPTIONS_MARKUP = convertKeysToOption(journeyTimes);
-  const TO_LOCATIONS_OPTIONS_MARKUP = fromLocation
-    ? convertKeysToOption(journeyTimes[fromLocation])
-    : null;
 
   const onMapClicked = (event) => {
     const longClicked = event.coordinate[0];
@@ -93,11 +91,9 @@ export default function Map() {
     }
   };
 
-  console.log(fromLocation, toLocation);
-
   return (
     <>
-      <>
+      <div style={{ padding: '20px 40px' }}>
         <StyledFlexContainer>
           <StyledSelectBarContainer>
             <h5 style={{ textAlign: 'left' }}>FROM:</h5>
@@ -106,7 +102,7 @@ export default function Map() {
               onFocus={() => setToLocation('')}
               onChange={(value) => setFromLocation(value)}
             >
-              {FROM_LOCATIONS_OPTIONS_MARKUP}
+              {convertKeysToOption(journeyTimes)}
             </StyledSelect>
           </StyledSelectBarContainer>
           <StyledSelectBarContainer>
@@ -115,7 +111,9 @@ export default function Map() {
               value={toLocation ? toLocation : 'SELECT DESTINATION'}
               onChange={(value) => setToLocation(value)}
             >
-              {TO_LOCATIONS_OPTIONS_MARKUP}
+              {fromLocation
+                ? convertKeysToOption(journeyTimes[fromLocation])
+                : null}
             </StyledSelect>
           </StyledSelectBarContainer>
         </StyledFlexContainer>
@@ -127,26 +125,77 @@ export default function Map() {
             progress={timeReduction ? timeReduction : 100}
           />
         </div>
-      </>
+      </div>
       <div style={{ position: 'relative', height: 600 }}>
         <DeckGL
           initialViewState={{
             latitude: -33.87364,
             longitude: 151.206913,
-            zoom: 5.5,
+            zoom: 8,
             bearing: 0,
             pitch: 0,
           }}
           controller={true}
           onClick={onMapClicked}
-          layers={layers}
+          layers={[
+            new PathLayer({
+              id: 'path-layer',
+              data: [
+                {
+                  name: 'northern-route',
+                  color: [101, 147, 245],
+                  path: [
+                    [152.90633, -31.4307],
+                    [152.46022, -31.911209],
+                    [151.780014, -32.92667],
+                    [151.623532, -32.960328],
+                    [151.419618, -33.30721],
+                    [151.341871, -33.42695],
+                    [151.081349, -33.772771],
+                    [151.206913, -33.87364],
+                  ],
+                },
+                {
+                  name: 'central-west-route',
+                  color: [244, 128, 35],
+                  path: [
+                    [148.17485, -33.137897],
+                    [149.1, -33.2833],
+                    [149.5775, -33.4193],
+                    [150.157, -33.4827],
+                    [150.3119, -33.7125],
+                    [151.206913, -33.87364],
+                  ],
+                },
+                {
+                  name: 'southern-route',
+                  color: [211, 11, 0],
+                  path: [
+                    [150.58268, -34.89259],
+                    [150.854446, -34.67028],
+                    [150.86775, -34.57912],
+                    [150.79474, -34.49337],
+                    [150.893555, -34.424179],
+                    [151.206913, -33.87364],
+                  ],
+                },
+              ],
+              rounded: true,
+              pickable: true,
+              /* onHover: (info, event) => console.log(info, event), */
+              autoHighlight: true,
+              highlightColor: [0, 0, 128, 128],
+              widthMinPixels: 5,
+              getColor: (data) => data.color,
+            }),
+          ]}
         >
           <StaticMap
             mapStyle='mapbox://styles/mapbox/streets-v11'
             mapboxApiAccessToken={process.env.REACT_APP_MAP_GL_ACCESS_TOKEN}
           >
             {CITIES.map((city, i) => (
-              <MarkerPin key={`${i}: ${city.name}`} size={20} city={city} />
+              <MarkerPin key={`${i}: ${city.name}`} size={22} city={city} />
             ))}
           </StaticMap>
         </DeckGL>
@@ -177,4 +226,8 @@ const StyledSelect = styled(Select)`
 const StyledOption = styled(Option)`
   font-size: 18px;
   background: red;
+`;
+
+const StyledTooltip = styled.div`
+  border: 2px solid black;
 `;

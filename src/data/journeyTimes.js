@@ -1,3 +1,7 @@
+const getDurationTimeFromObj = (locationA, locationB) => {
+  return journeyTimes[locationA][locationB];
+};
+
 export const journeyTimes = {
   'Port Macquarie': {
     Taree: [4.8, 2.7],
@@ -70,5 +74,45 @@ export const journeyTimes = {
     Tuggerah: [2.5, 0.8],
     Gosford: [2.3, 0.65],
     Epping: [1.5, 0.4],
+    Parkes: [5, 2.3],
+    Orange: [4.3, 1.6],
+    Bathurst: [3.1, 1.1],
+    Lithgow: [2.3, 0.6],
+    Katoomba: [1.3, 0.2],
+  },
+  Parkes: {
+    Orange: [1.2, 0.2],
+    Bathurst: [2.8, 0.8],
+    Lithgow: [3.5, 1.5],
+    Katoomba: [4.3, 1.1],
+    Sydney: [5, 2.3],
+  },
+  Orange: {
+    Parkes: [1.2, 0.2],
+    Bathurst: [1.1, 0.4],
+    Lithgow: [2.5, 1.1],
+    Katoomba: [1.8, 0.8],
+    Sydney: [4.3, 1.6],
+  },
+  Bathurst: {
+    Parkes: [2.8, 0.8],
+    Orange: [1.1, 0.4],
+    Lithgow: [1.3, 0.5],
+    Katoomba: [1.9, 0.8],
+    Sydney: [3.1, 1.1],
+  },
+  Lithgow: {
+    Parkes: [3.5, 1.5],
+    Orange: [2.5, 1.1],
+    Bathurst: [1.3, 0.5],
+    Katoomba: [0.7, 0.2],
+    Sydney: [3.1, 1.1],
+  },
+  Katoomba: {
+    Parkes: [4.3, 1.1],
+    Orange: [1.8, 0.8],
+    Bathurst: [1.9, 0.8],
+    Ligthow: [0.7, 0.2],
+    Sydney: [1.3, 0.2],
   },
 };

@@ -38,85 +38,71 @@ export const CITIES = [
     city: 'Sydney',
     latitude: -33.87364,
     longitude: 151.206913,
+    routes: ['northern-route', 'central-west-route'],
   },
   {
     city: 'Parkes',
     latitude: -33.137897,
     longitude: 148.17485,
+    routes: ['central-west-route'],
   },
-  /*   {
+  {
     city: 'Orange',
-    latitude: 30.3072,
-    longitude: -97.756
+    latitude: -33.2833,
+    longitude: 149.1,
+    routes: ['central-west-route'],
   },
   {
     city: 'Bathurst',
-    latitude: 30.337,
-    longitude: -81.6613
+    latitude: -33.4193,
+    longitude: 149.5775,
+    routes: ['central-west-route'],
   },
   {
     city: 'Lithgow',
-    latitude: 37.7751,
-    longitude: -122.4193
+    latitude: -33.4827,
+    longitude: 150.157,
+    routes: ['central-west-route'],
   },
   {
     city: 'Katoomba',
-    latitude: 39.9848,
-    longitude: -82.985
-  },
-  {
-    city: 'St Marys',
-    latitude: 39.7767,
-    longitude: -86.1459
-  },
-  {
-    city: 'Campbelltown',
-    latitude: 32.7795,
-    longitude: -97.3463
-  },
-  {
-    city: 'Maccarthur',
-    latitude: 35.2087,
-    longitude: -80.8307
+    latitude: -33.7125,
+    longitude: 150.3119,
+    routes: ['central-west-route'],
   },
   {
     city: 'Wollongong',
-    latitude: 47.6205,
-    longitude: -122.3509
+    latitude: -34.424179,
+    longitude: 150.893555,
   },
   {
     city: 'Dapto',
-    latitude: 39.7618,
-    longitude: -104.8806
+    latitude: -34.49337,
+    longitude: 150.79474,
   },
   {
     city: 'Shellharbour',
-    latitude: 31.8484,
-    longitude: -106.427
+    latitude: -34.57912,
+    longitude: 150.86775,
   },
   {
     city: 'Kiama',
-    latitude: 31.8484,
-    longitude: -106.427
+    latitude: -34.67028,
+    longitude: 150.854446,
   },
   {
     city: 'Bomdaberry',
-    latitude: 31.8484,
-    longitude: -106.427
-  },
-  {
-    city: 'Moss Vale',
-    latitude: 31.8484,
-    longitude: -106.427
+    latitude: -34.89259,
+    longitude: 150.58268,
   },
   {
     city: 'Goulburn',
     latitude: 31.8484,
-    longitude: -106.427
+    longitude: -106.427,
   },
   {
     city: 'Canberra',
     latitude: 31.8484,
-    longitude: -106.427
-  } */
+    longitude: -106.427,
+  },
 ];
