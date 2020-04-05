@@ -4,8 +4,8 @@
  * @returns {string} 2hrs 30min
  */
 export const timeToString = (num) => {
-  let hour = Math.floor(num);
-  let minute = Math.round((num - hour) * 100);
+  const hour = Math.floor(num);
+  const minute = Math.round((num - hour) * 100);
 
   return `${hour}hrs ${minute}min`;
 };
