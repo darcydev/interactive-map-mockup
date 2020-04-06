@@ -11,7 +11,13 @@ import Slider from './Slider';
 import { timeToString } from '../helpers/timeToString';
 import { journeyTimes } from '../data/journeyTimes';
 import { CITIES } from '../data/cities';
-import { allRoutes, northernRoute } from '../data/route-layers';
+import {
+  allRoutes,
+  northernRoute,
+  centralWestRoute,
+  southernWestRoute,
+  southernRoute,
+} from '../data/route-layers';
 import Key from './Key';
 
 const { Option } = Select;
@@ -61,7 +67,7 @@ const cityWithNearestLongAndLat = (latClicked, longClicked) => {
 export default function Map() {
   const [fromLocation, setFromLocation] = useState('');
   const [toLocation, setToLocation] = useState('');
-  const [routeSelected, setRouteSelected] = useState('');
+  const [routeSelected, setRouteSelected] = useState(allRoutes);
 
   let beforeTime, afterTime, beforeString, afterString, timeReduction;
 
@@ -77,7 +83,6 @@ export default function Map() {
     beforeString = timeToString(beforeTime);
     afterString = timeToString(afterTime);
     timeReduction = Math.round((afterTime / beforeTime) * 100);
-    // setRouteSelected('northern-route');
   }
 
   const onMapClicked = (event) => {
@@ -93,17 +98,68 @@ export default function Map() {
       setFromLocation(nearestCity);
       setToLocation('');
     }
+
+    updateRouteLayer();
   };
 
   const clearForm = () => {
     setFromLocation('');
     setToLocation('');
+    setRouteSelected(allRoutes);
   };
+
+  const updateRouteLayer = () => {
+    if (!fromLocation) {
+      setRouteSelected(allRoutes);
+      return;
+    }
+
+    for (let i = 0; i < CITIES.length; i++) {
+      const { city, routes } = CITIES[i];
+
+      if (city === fromLocation) {
+        if (routes.length === 1) {
+          if (routes[0] === 'northern-route') setRouteSelected(northernRoute);
+          else if (routes[0] === 'central-west-route')
+            setRouteSelected(centralWestRoute);
+          else if (routes[0] === 'southern-west-route')
+            setRouteSelected(southernWestRoute);
+          else if (routes[0] === 'southern-route')
+            setRouteSelected(southernRoute);
+        }
+      }
+    }
+  };
+
+  const pathLayers = [
+    new PathLayer({
+      id: 'path-layer',
+      data: routeSelected,
+      rounded: true,
+      pickable: true,
+      autoHighlight: true,
+      highlightColor: [0, 0, 128, 128],
+      widthMinPixels: 5,
+      getColor: (data) => data.color,
+    }),
+  ];
+
+  console.log(pathLayers);
 
   return (
     <>
       <StyledControlPanel>
-        <div style={{ textAlign: 'right' }}>
+        <div
+          style={{
+            textAlign: 'right',
+            display: 'flex',
+            justifyContent: 'space-between',
+            padding: '10px 5px',
+          }}
+        >
+          <Button type='primary' onClick={updateRouteLayer}>
+            SHOW ROUTE
+          </Button>
           <Button type='primary' onClick={clearForm}>
             <CloseOutlined />
           </Button>
@@ -152,18 +208,7 @@ export default function Map() {
           }}
           controller={true}
           onClick={onMapClicked}
-          layers={[
-            new PathLayer({
-              id: 'path-layer',
-              data: routeSelected === '' ? allRoutes : northernRoute,
-              rounded: true,
-              pickable: true,
-              autoHighlight: true,
-              highlightColor: [0, 0, 128, 128],
-              widthMinPixels: 5,
-              getColor: (data) => data.color,
-            }),
-          ]}
+          layers={pathLayers}
         >
           <StaticMap
             mapStyle='mapbox://styles/mapbox/streets-v11'
