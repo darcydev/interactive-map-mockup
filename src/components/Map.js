@@ -17,6 +17,7 @@ import {
   centralWestRoute,
   southernWestRoute,
   southernRoute,
+  campbelltownRoutes,
 } from '../data/route-layers';
 import Key from './Key';
 
@@ -109,25 +110,24 @@ export default function Map() {
   };
 
   const updateRouteLayer = () => {
-    if (!fromLocation) {
-      setRouteSelected(allRoutes);
-      return;
-    }
+    if (!fromLocation) setRouteSelected(allRoutes);
+    else if (fromLocation === 'Sydney') setRouteSelected(allRoutes);
+    else if (fromLocation === 'Campbelltown')
+      setRouteSelected(campbelltownRoutes);
+    else {
+      for (let i = 0; i < CITIES.length; i++) {
+        const { city, routes } = CITIES[i];
 
-    for (let i = 0; i < CITIES.length; i++) {
-      const { city, routes } = CITIES[i];
-
-      console.log(fromLocation);
-
-      if (city === fromLocation) {
-        if (routes.length === 1) {
-          if (routes[0] === 'northern-route') setRouteSelected(northernRoute);
-          else if (routes[0] === 'central-west-route')
-            setRouteSelected(centralWestRoute);
-          else if (routes[0] === 'southern-west-route')
-            setRouteSelected(southernWestRoute);
-          else if (routes[0] === 'southern-route')
-            setRouteSelected(southernRoute);
+        if (city === fromLocation) {
+          if (routes.length === 1) {
+            if (routes[0] === 'northern-route') setRouteSelected(northernRoute);
+            else if (routes[0] === 'central-west-route')
+              setRouteSelected(centralWestRoute);
+            else if (routes[0] === 'southern-west-route')
+              setRouteSelected(southernWestRoute);
+            else if (routes[0] === 'southern-route')
+              setRouteSelected(southernRoute);
+          }
         }
       }
     }
