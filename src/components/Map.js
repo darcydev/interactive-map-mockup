@@ -72,30 +72,14 @@ export default function Map() {
 
   let beforeTime, afterTime, beforeString, afterString, timeReduction;
 
-  if (
-    fromLocation &&
-    toLocation &&
-    fromLocation !== toLocation &&
-    journeyTimes[fromLocation][toLocation]
-  ) {
-    // the two selected locations are a real route, so extract the data and update the displayed layers
-    beforeTime = journeyTimes[fromLocation][toLocation][0];
-    afterTime = journeyTimes[fromLocation][toLocation][1];
-    beforeString = timeToString(beforeTime);
-    afterString = timeToString(afterTime);
-    timeReduction = Math.round((afterTime / beforeTime) * 100);
-  }
-
   const onMapClicked = (event) => {
     const longClicked = event.coordinate[0];
     const latClicked = event.coordinate[1];
     const nearestCity = cityWithNearestLongAndLat(latClicked, longClicked);
 
-    if (fromLocation === '' && toLocation === '') {
-      setFromLocation(nearestCity);
-    } else if (toLocation === '') {
-      setToLocation(nearestCity);
-    } else {
+    if (fromLocation === '' && toLocation === '') setFromLocation(nearestCity);
+    else if (toLocation === '') setToLocation(nearestCity);
+    else {
       setFromLocation(nearestCity);
       setToLocation('');
     }
@@ -133,20 +117,18 @@ export default function Map() {
     }
   };
 
-  const pathLayers = [
-    new PathLayer({
-      id: 'path-layer',
-      data: routeSelected,
-      rounded: true,
-      pickable: true,
-      autoHighlight: true,
-      highlightColor: [0, 0, 128, 128],
-      widthMinPixels: 5,
-      getColor: (data) => data.color,
-    }),
-  ];
-
-  console.log(pathLayers);
+  if (fromLocation && toLocation && fromLocation !== toLocation) {
+    if (journeyTimes[fromLocation][toLocation]) {
+      // the two selected locations are a real route, so extract the data and update the displayed layers
+      beforeTime = journeyTimes[fromLocation][toLocation][0];
+      afterTime = journeyTimes[fromLocation][toLocation][1];
+      beforeString = timeToString(beforeTime);
+      afterString = timeToString(afterTime);
+      timeReduction = Math.round((afterTime / beforeTime) * 100);
+    } else {
+      clearForm();
+    }
+  }
 
   return (
     <>
@@ -210,7 +192,18 @@ export default function Map() {
           }}
           controller={true}
           onClick={onMapClicked}
-          layers={pathLayers}
+          layers={[
+            new PathLayer({
+              id: 'path-layer',
+              data: routeSelected,
+              rounded: true,
+              pickable: true,
+              autoHighlight: true,
+              highlightColor: [0, 0, 128, 128],
+              widthMinPixels: 5,
+              getColor: (data) => data.color,
+            }),
+          ]}
         >
           <StaticMap
             mapStyle='mapbox://styles/mapbox/streets-v11'
