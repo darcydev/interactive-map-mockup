@@ -68,7 +68,7 @@ const StyledToolTip = styled.div`
     }
   }
 
-  .tooltip-inner:after {
+  /*  .tooltip-inner:after {
     content: '';
     position: absolute;
     top: 100%;
@@ -79,7 +79,7 @@ const StyledToolTip = styled.div`
     border-top: 8px solid #fff;
     border-right: 8px solid transparent;
     border-left: 8px solid transparent;
-  }
+  } */
 
   .tooltip:hover span {
     display: block;

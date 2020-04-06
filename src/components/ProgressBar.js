@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Motion, spring } from 'react-motion';
 
-export default function ProgressBar({ value = 100 }) {
+export default function ProgressBar({ value }) {
   return (
     <OuterBar>
       <Motion
@@ -39,4 +39,8 @@ const InnerBar = styled.span`
   height: 12px;
   border-radius: 3px;
   background-color: orange;
+
+  :after {
+    background: green;
+  }
 `;

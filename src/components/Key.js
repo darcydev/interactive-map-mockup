@@ -5,19 +5,19 @@ export default function Key() {
   return (
     <StyledContainer>
       <div className='row'>
-        <span class='dot blue' />
+        <span className='dot blue' />
         <h5>Northern route</h5>
       </div>
       <div className='row'>
-        <span class='dot red' />
+        <span className='dot red' />
         <h5>Southern route</h5>
       </div>
       <div className='row'>
-        <span class='dot green' />
+        <span className='dot green' />
         <h5>Southern inland route</h5>
       </div>
       <div className='row'>
-        <span class='dot orange' />
+        <span className='dot orange' />
         <h5>Western route</h5>
       </div>
       <div className='row'>
