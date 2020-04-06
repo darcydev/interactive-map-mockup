@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import DeckGL from '@deck.gl/react';
 import { PathLayer } from '@deck.gl/layers';
-import { StaticMap, Popup } from 'react-map-gl';
+import { StaticMap } from 'react-map-gl';
 import styled from 'styled-components';
 import { Select, Button } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
@@ -83,8 +83,6 @@ export default function Map() {
       setFromLocation(nearestCity);
       setToLocation('');
     }
-
-    updateRouteLayer();
   };
 
   const clearForm = () => {
@@ -93,7 +91,7 @@ export default function Map() {
     setRouteSelected(allRoutes);
   };
 
-  const updateRouteLayer = () => {
+  const updateRouteLayer = useCallback(() => {
     if (!fromLocation) setRouteSelected(allRoutes);
     else if (fromLocation === 'Sydney') setRouteSelected(allRoutes);
     else if (fromLocation === 'Campbelltown')
@@ -103,19 +101,21 @@ export default function Map() {
         const { city, routes } = CITIES[i];
 
         if (city === fromLocation) {
-          if (routes.length === 1) {
-            if (routes[0] === 'northern-route') setRouteSelected(northernRoute);
-            else if (routes[0] === 'central-west-route')
-              setRouteSelected(centralWestRoute);
-            else if (routes[0] === 'southern-west-route')
-              setRouteSelected(southernWestRoute);
-            else if (routes[0] === 'southern-route')
-              setRouteSelected(southernRoute);
-          }
+          if (routes[0] === 'northern-route') setRouteSelected(northernRoute);
+          else if (routes[0] === 'central-west-route')
+            setRouteSelected(centralWestRoute);
+          else if (routes[0] === 'southern-west-route')
+            setRouteSelected(southernWestRoute);
+          else if (routes[0] === 'southern-route')
+            setRouteSelected(southernRoute);
         }
       }
     }
-  };
+  }, [fromLocation]);
+
+  useEffect(() => {
+    updateRouteLayer();
+  }, [fromLocation, updateRouteLayer]);
 
   if (fromLocation && toLocation && fromLocation !== toLocation) {
     if (journeyTimes[fromLocation][toLocation]) {
@@ -136,14 +136,8 @@ export default function Map() {
         <div
           style={{
             textAlign: 'right',
-            display: 'flex',
-            justifyContent: 'space-between',
-            padding: '10px 5px',
           }}
         >
-          <Button type='primary' onClick={updateRouteLayer}>
-            SHOW ROUTE
-          </Button>
           <Button type='primary' onClick={clearForm}>
             <CloseOutlined />
           </Button>
@@ -210,7 +204,7 @@ export default function Map() {
             mapboxApiAccessToken={process.env.REACT_APP_MAP_GL_ACCESS_TOKEN}
           >
             {CITIES.map((city, i) => (
-              <MarkerPin key={`${i}: ${city.name}`} size={22} city={city} />
+              <MarkerPin key={`${i}: ${city.name}`} size={18} city={city} />
             ))}
           </StaticMap>
         </DeckGL>
@@ -232,39 +226,6 @@ const StyledControlPanel = styled.div`
   .flex-container {
     display: flex;
     justify-content: space-between;
-  }
-
-  .key {
-    text-align: right;
-
-    .row {
-      display: flex;
-      justify-content: flex-end;
-
-      span {
-        height: 15px;
-        width: 15px;
-        border-radius: 50%;
-        display: inline-block;
-        vertical-align: sub;
-      }
-
-      .blue {
-        background-color: blue;
-      }
-
-      .green {
-        background-color: green;
-      }
-
-      .red {
-        background-color: red;
-      }
-
-      .orange {
-        background-color: orange;
-      }
-    }
   }
 `;
 
