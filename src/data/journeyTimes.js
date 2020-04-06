@@ -261,4 +261,11 @@ export const journeyTimes = {
     Mittagong: Mittagong_Canberra,
     Goulburn: Goulburn_Canberra,
   },
+  /*   Melbourne: {
+    Sydney: {
+      beforeTime: 3.5,
+      afterTime: 1.2,
+      route: ['big-south-route'],
+    },
+  }, */
 };
