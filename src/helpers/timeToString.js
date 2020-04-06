@@ -7,5 +7,11 @@ export const timeToString = (num) => {
   const hour = Math.floor(num);
   const minute = Math.round((num - hour) * 100);
 
-  return `${hour}hrs ${minute}min`;
+  if (hour < 1) {
+    return `${minute}min`;
+  } else if (hour === 1) {
+    return `${hour}hr ${minute}min`;
+  } else {
+    return `${hour}hrs ${minute}min`;
+  }
 };

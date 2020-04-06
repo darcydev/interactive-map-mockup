@@ -5,12 +5,28 @@ export default function Key() {
   return (
     <StyledContainer>
       <div className='row'>
-        <h5>Station Marker</h5>
+        <span class='dot blue' />
+        <h5>Northern Route</h5>
+      </div>
+      <div className='row'>
+        <span class='dot orange' />
+        <h5>Central West Route</h5>
+      </div>
+      <div className='row'>
+        <span class='dot red' />
+        <h5>Southern Route</h5>
+      </div>
+      <div className='row'>
+        <span class='dot green' />
+        <h5>Southern West Route</h5>
+      </div>
+      <div className='row'>
         <svg
           height={15}
           viewBox='0 0 24 24'
           style={{
             fill: '#d00',
+            paddingLeft: 8,
           }}
         >
           <path
@@ -19,46 +35,38 @@ export default function Key() {
   C20.1,15.8,20.2,15.8,20.2,15.7z`}
           />
         </svg>
-      </div>
-      <div className='row'>
-        <h5>Northern Route</h5>
-        <span class='dot blue' />
-      </div>
-      <div className='row'>
-        <h5>Central West Route</h5>
-        <span class='dot orange' />
-      </div>
-      <div className='row'>
-        <h5>Southern Route</h5>
-        <span class='dot red' />
-      </div>
-      <div className='row'>
-        <h5>Southern West Route</h5>
-        <span class='dot green' />
+        <h5 style={{ paddingLeft: 17 }}>Station Marker</h5>
       </div>
     </StyledContainer>
   );
 }
 
 const StyledContainer = styled.div`
-  text-align: right;
+  position: absolute;
+  padding: 10px;
+  right: 30px;
+  bottom: 30px;
+  background: white;
+  border-radius: 10px;
 
   .row {
     display: flex;
-    justify-content: flex-end;
     padding: 6px 0;
+    text-align: left;
 
     h5 {
-      padding: 0 10px 0 0 !important;
+      padding: 0 0 0 10px;
       margin-bottom: 0px;
     }
 
     span {
-      height: 15px;
-      width: 15px;
+      height: 6px;
+      width: 30px;
       border-radius: 50%;
       display: inline-block;
       vertical-align: sub;
+      border-radius: 10px;
+      margin-top: 6px;
     }
 
     .blue {

@@ -11,8 +11,8 @@ export default function ProgressBar({ value = 100 }) {
         style={{
           width: spring(value, {
             stiffness: 30,
-            damping: 15
-          })
+            damping: 15,
+          }),
         }}
       >
         {(style) => <InnerBar width={style.width} />}
@@ -22,7 +22,7 @@ export default function ProgressBar({ value = 100 }) {
 }
 
 ProgressBar.propTypes = {
-  value: PropTypes.number
+  value: PropTypes.number,
 };
 
 const OuterBar = styled.div`
@@ -38,5 +38,5 @@ const InnerBar = styled.span`
   width: ${(props) => props.width}%;
   height: 12px;
   border-radius: 3px;
-  background-color: green;
+  background-color: orange;
 `;
