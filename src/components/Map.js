@@ -69,8 +69,37 @@ export default function Map() {
   const [fromLocation, setFromLocation] = useState('');
   const [toLocation, setToLocation] = useState('');
   const [routeSelected, setRouteSelected] = useState(allRoutes);
+  const [toolTip, setToolTip] = useState({
+    title: '',
+    content: '',
+    visible: false,
+  });
 
   let beforeTime, afterTime, beforeString, afterString, timeReduction;
+
+  const onMapHover = (event) => {
+    if (event.coordinate) {
+      const longEvent = event.coordinate[0];
+      const latEvent = event.coordinate[1];
+      const nearestCity = cityWithNearestLongAndLat(latEvent, longEvent);
+
+      if (nearestCity) {
+        document.getElementById('tooltip').style.top = event.y + 20 + 'px';
+        document.getElementById('tooltip').style.left = event.x + 20 + 'px';
+        setToolTip({
+          title: nearestCity,
+          content: 'enter here',
+          visible: true,
+        });
+      } else {
+        setToolTip({
+          title: '',
+          content: '',
+          visible: false,
+        });
+      }
+    }
+  };
 
   const onMapClicked = (event) => {
     const longClicked = event.coordinate[0];
@@ -131,7 +160,15 @@ export default function Map() {
   }
 
   return (
-    <>
+    <StyledContainer>
+      <div id='tooltip'>
+        {toolTip.visible && (
+          <div className='tooltip-inner'>
+            <h3>{toolTip.title}</h3>
+            <p>{toolTip.content}</p>
+          </div>
+        )}
+      </div>
       <StyledControlPanel>
         <div
           style={{
@@ -186,6 +223,7 @@ export default function Map() {
           }}
           controller={true}
           onClick={onMapClicked}
+          onHover={onMapHover}
           layers={[
             new PathLayer({
               id: 'path-layer',
@@ -209,9 +247,34 @@ export default function Map() {
           </StaticMap>
         </DeckGL>
       </div>
-    </>
+    </StyledContainer>
   );
 }
+
+const StyledContainer = styled.div`
+  #tooltip {
+    z-index: 9999;
+    position: absolute;
+
+    .tooltip-inner {
+      background: black;
+      padding: 3px;
+      border-radius: 10px;
+      padding: 10px;
+
+      h3,
+      p {
+        color: white;
+      }
+    }
+  }
+
+  .tooltip:hover span {
+    display: block;
+    position: fixed;
+    overflow: hidden;
+  }
+`;
 
 const StyledControlPanel = styled.div`
   position: absolute;
