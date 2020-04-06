@@ -1,9 +1,12 @@
 export const northernStations = [
   'Port Macquarie',
   'Taree',
+  'Newcastle',
   'Lake Macquarie',
+  'Tuggerah',
   'Gosford',
   'Epping',
+  'Sydney',
 ];
 export const centralWestStations = [
   'Parkes',
@@ -11,21 +14,23 @@ export const centralWestStations = [
   'Bathurst',
   'Lithgow',
   'Katoomba',
+  'Sydney',
 ];
 export const southernWestStations = [
   'Canberra',
   'Goulburn',
   'Mittagong',
   'Campbelltown',
+  'Sydney',
 ];
 export const southernStations = [
-  'Canberra',
   'Bomdaberry',
   'Kiama',
   'Shellharbour',
   'Dapto',
   'Wollongong',
-  'Sunderland',
+  'Sutherland',
+  'Sydney',
 ];
 
 export const allRoutes = [

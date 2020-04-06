@@ -9,6 +9,7 @@ import { InsuranceOutlined } from '@ant-design/icons';
 import MarkerPin from './MarkerPin';
 import Slider from './Slider';
 import Key from './Key';
+import Tooltip from './Tooltip';
 import { findNearestCity } from '../helpers/findNearestCity';
 import { journeyTimes } from '../data/journeyTimes';
 import { CITIES } from '../data/cities';
@@ -118,8 +119,20 @@ export default function Map() {
       if (nearestCity) {
         document.getElementById('tooltip').style.top = event.y - 130 + 'px';
         document.getElementById('tooltip').style.left = event.x + 580 + 'px';
+
+        let hoverRoutes = [];
+        if (northernStations.includes(nearestCity))
+          hoverRoutes.push('northern-route');
+        if (centralWestStations.includes(nearestCity))
+          hoverRoutes.push('central-west-route');
+        if (southernWestStations.includes(nearestCity))
+          hoverRoutes.push('southern-west-route');
+        if (southernStations.includes(nearestCity))
+          hoverRoutes.push('southern-route');
+
         setToolTip({
           title: nearestCity,
+          routes: hoverRoutes,
           visible: true,
         });
       } else {
@@ -580,14 +593,7 @@ export default function Map() {
         </StyledControlPanel>
       </div>
       <div className='map'>
-        <div id='tooltip'>
-          {toolTip.visible && (
-            <div className='tooltip-inner'>
-              <div className='routes'>TODO</div>
-              <h3>{toolTip.title}</h3>
-            </div>
-          )}
-        </div>
+        <Tooltip toolTip={toolTip} />
         <div style={{ position: 'relative', height: '100vh' }}>
           <DeckGL
             initialViewState={{
@@ -608,7 +614,7 @@ export default function Map() {
                 pickable: true,
                 autoHighlight: true,
                 highlightColor: [0, 0, 128, 128],
-                widthMinPixels: 6.5,
+                widthMinPixels: 7,
                 getColor: (data) => data.color,
               }),
             ]}
@@ -654,40 +660,6 @@ const StyledContainer = styled.div`
     .ant-drawer-content {
       background: green;
     }
-  }
-
-  #tooltip {
-    z-index: 9999;
-    position: absolute;
-
-    .tooltip-inner {
-      background: white;
-      padding: 3px;
-      border-radius: 10px;
-      padding: 10px;
-      width: 140px;
-      line-height: 30px;
-      text-align: center;
-    }
-
-    .tooltip-inner:after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -8px;
-      width: 0;
-      height: 0;
-      border-top: 8px solid #000000;
-      border-right: 8px solid transparent;
-      border-left: 8px solid transparent;
-    }
-  }
-
-  .tooltip:hover span {
-    display: block;
-    position: fixed;
-    overflow: hidden;
   }
 `;
 
