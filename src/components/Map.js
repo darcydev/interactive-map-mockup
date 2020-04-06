@@ -47,6 +47,49 @@ import {
   Gosford_Epping,
   Gosford_Sydney,
   Epping_Sydney,
+  Parkes_Orange,
+  Parkes_Bathurst,
+  Parkes_Lithgow,
+  Parkes_Katoomba,
+  Orange_Bathurst,
+  Orange_Lithgow,
+  Orange_Katoomba,
+  Orange_Sydney,
+  Bathurst_Lithgow,
+  Bathurst_Katoomba,
+  Bathurst_Sydney,
+  Lithgow_Katoomba,
+  Lithgow_Sydney,
+  Katoomba_Sydney,
+  Canberra_Goulburn,
+  Canberra_Mittagong,
+  Canberra_Campbelltown,
+  Goulburn_Mittagong,
+  Goulburn_Campbelltown,
+  Goulburn_Sydney,
+  Mittagong_Campbelltown,
+  Mittagong_Sydney,
+  Campbelltown_Sydney,
+  Bomdaberry_Kiama,
+  Bomdaberry_Shellharbour,
+  Bomdaberry_Dapto,
+  Bomdaberry_Wollongong,
+  Bomdaberry_Sutherland,
+  Kiama_Shellharbour,
+  Kiama_Dapto,
+  Kiama_Wollongong,
+  Kiama_Sutherland,
+  Kiama_Sydney,
+  Shellharbour_Dapto,
+  Shellharbour_Wollongong,
+  Shellharbour_Sutherland,
+  Shellharbour_Sydney,
+  Dapto_Wollongong,
+  Dapto_Sutherland,
+  Dapto_Sydney,
+  Wollongong_Sutherland,
+  Wollongong_Sydney,
+  Sutherland_Sydney,
   northernStations,
   centralWestStations,
   southernWestStations,
@@ -112,9 +155,9 @@ export default function Map() {
       } else if (centralWestStations.includes(fromLocation)) {
         setRouteSelected(centralWestRoute);
       } else if (southernWestStations.includes(fromLocation)) {
-        setRouteSelected(southernWestStations);
+        setRouteSelected(southernWestRoute);
       } else if (southernStations.includes(fromLocation)) {
-        setRouteSelected(southernStations);
+        setRouteSelected(southernRoute);
       }
     }
   }, [fromLocation]);
@@ -126,30 +169,20 @@ export default function Map() {
       updateRouteLayer();
     } else if (fromLocation && toLocation) {
       if (fromLocation === 'Port Macquarie') {
-        switch (toLocation) {
-          case 'Taree':
-            setRouteSelected(PortMacquarie_Taree);
-            break;
-          case 'Newcastle':
-            setRouteSelected(PortMacquarie_Newcastle);
-            break;
-          case 'Lake Macquarie':
-            setRouteSelected(PortMacquarie_LakeMacquarie);
-            break;
-          case 'Tuggerah':
-            setRouteSelected(PortMacquarie_Tuggerah);
-            break;
-          case 'Gosford':
-            setRouteSelected(PortMacquarie_Gosford);
-            break;
-          case 'Epping':
-            setRouteSelected(PortMacquarie_Epping);
-            break;
-          case 'Sydney':
-            setRouteSelected(northernRoute);
-            break;
-          default:
-            break;
+        if (toLocation === 'Taree') {
+          setRouteSelected(PortMacquarie_Taree);
+        } else if (toLocation === 'Newcastle') {
+          setRouteSelected(PortMacquarie_Newcastle);
+        } else if (toLocation === 'Lake Macquarie') {
+          setRouteSelected(PortMacquarie_LakeMacquarie);
+        } else if (toLocation === 'Tuggerah') {
+          setRouteSelected(PortMacquarie_Tuggerah);
+        } else if (toLocation === 'Gosford') {
+          setRouteSelected(PortMacquarie_Gosford);
+        } else if (toLocation === 'Epping') {
+          setRouteSelected(PortMacquarie_Epping);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(northernRoute);
         }
       } else if (fromLocation === 'Taree') {
         if (toLocation === 'Port Macquarie') {
@@ -198,6 +231,254 @@ export default function Map() {
           setRouteSelected(LakeMacquarie_Epping);
         } else if (toLocation === 'Sydney') {
           setRouteSelected(LakeMacquarie_Sydney);
+        }
+      } else if (fromLocation === 'Tuggerah') {
+        if (toLocation === 'Port Macquarie') {
+          setRouteSelected(PortMacquarie_Tuggerah);
+        } else if (toLocation === 'Taree') {
+          setRouteSelected(Taree_Tuggerah);
+        } else if (toLocation === 'Newcastle') {
+          setRouteSelected(Newcastle_Tuggerah);
+        } else if (toLocation === 'Lake Macquarie') {
+          setRouteSelected(LakeMacquarie_Tuggerah);
+        } else if (toLocation === 'Gosford') {
+          setRouteSelected(Tuggerah_Gosford);
+        } else if (toLocation === 'Epping') {
+          setRouteSelected(Tuggerah_Epping);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Tuggerah_Sydney);
+        }
+      } else if (fromLocation === 'Gosford') {
+        if (toLocation === 'Port Macquarie') {
+          setRouteSelected(PortMacquarie_Gosford);
+        } else if (toLocation === 'Taree') {
+          setRouteSelected(Taree_Gosford);
+        } else if (toLocation === 'Newcastle') {
+          setRouteSelected(Newcastle_Gosford);
+        } else if (toLocation === 'Lake Macquarie') {
+          setRouteSelected(LakeMacquarie_Gosford);
+        } else if (toLocation === 'Tuggerah') {
+          setRouteSelected(Tuggerah_Gosford);
+        } else if (toLocation === 'Epping') {
+          setRouteSelected(Gosford_Epping);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Gosford_Sydney);
+        }
+      } else if (fromLocation === 'Epping') {
+        if (toLocation === 'Port Macquarie') {
+          setRouteSelected(PortMacquarie_Epping);
+        } else if (toLocation === 'Taree') {
+          setRouteSelected(Taree_Epping);
+        } else if (toLocation === 'Newcastle') {
+          setRouteSelected(Newcastle_Epping);
+        } else if (toLocation === 'Lake Macquarie') {
+          setRouteSelected(LakeMacquarie_Epping);
+        } else if (toLocation === 'Gosford') {
+          setRouteSelected(Gosford_Epping);
+        } else if (toLocation === 'Tuggerah') {
+          setRouteSelected(Tuggerah_Epping);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Epping_Sydney);
+        }
+      } else if (fromLocation === 'Sydney') {
+        if (toLocation === 'Port Macquarie') {
+          setRouteSelected(northernRoute);
+        } else if (toLocation === 'Taree') {
+          setRouteSelected(Taree_Sydney);
+        } else if (toLocation === 'Newcastle') {
+          setRouteSelected(Newcastle_Sydney);
+        } else if (toLocation === 'Lake Macquarie') {
+          setRouteSelected(LakeMacquarie_Sydney);
+        } else if (toLocation === 'Gosford') {
+          setRouteSelected(Gosford_Sydney);
+        } else if (toLocation === 'Epping') {
+          setRouteSelected(Epping_Sydney);
+        } else if (toLocation === 'Tuggerah') {
+          setRouteSelected(Tuggerah_Sydney);
+        }
+      } else if (fromLocation === 'Parkes') {
+        if (toLocation === 'Orange') {
+          setRouteSelected(Parkes_Orange);
+        } else if (toLocation === 'Bathurst') {
+          setRouteSelected(Parkes_Bathurst);
+        } else if (toLocation === 'Lithgow') {
+          setRouteSelected(Parkes_Lithgow);
+        } else if (toLocation === 'Katoomba') {
+          setRouteSelected(Parkes_Katoomba);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(centralWestRoute);
+        }
+      } else if (fromLocation === 'Orange') {
+        if (toLocation === 'Parkes') {
+          setRouteSelected(Parkes_Orange);
+        } else if (toLocation === 'Bathurst') {
+          setRouteSelected(Orange_Bathurst);
+        } else if (toLocation === 'Lithgow') {
+          setRouteSelected(Orange_Lithgow);
+        } else if (toLocation === 'Katoomba') {
+          setRouteSelected(Orange_Katoomba);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Orange_Sydney);
+        }
+      } else if (fromLocation === 'Bathurst') {
+        if (toLocation === 'Parkes') {
+          setRouteSelected(Parkes_Bathurst);
+        } else if (toLocation === 'Orange') {
+          setRouteSelected(Orange_Bathurst);
+        } else if (toLocation === 'Lithgow') {
+          setRouteSelected(Bathurst_Lithgow);
+        } else if (toLocation === 'Katoomba') {
+          setRouteSelected(Bathurst_Katoomba);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Bathurst_Sydney);
+        }
+      } else if (fromLocation === 'Lithgow') {
+        if (toLocation === 'Orange') {
+          setRouteSelected(Orange_Lithgow);
+        } else if (toLocation === 'Bathurst') {
+          setRouteSelected(Bathurst_Lithgow);
+        } else if (toLocation === 'Parkes') {
+          setRouteSelected(Parkes_Lithgow);
+        } else if (toLocation === 'Katoomba') {
+          setRouteSelected(Lithgow_Katoomba);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Lithgow_Sydney);
+        }
+      } else if (fromLocation === 'Katoomba') {
+        if (toLocation === 'Orange') {
+          setRouteSelected(Parkes_Orange);
+        } else if (toLocation === 'Bathurst') {
+          setRouteSelected(Parkes_Bathurst);
+        } else if (toLocation === 'Lithgow') {
+          setRouteSelected(Parkes_Lithgow);
+        } else if (toLocation === 'Katoomba') {
+          setRouteSelected(Parkes_Katoomba);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Katoomba_Sydney);
+        }
+      } else if (fromLocation === 'Canberra') {
+        if (toLocation === 'Goulburn') {
+          setRouteSelected(Canberra_Goulburn);
+        } else if (toLocation === 'Mittagong') {
+          setRouteSelected(Canberra_Mittagong);
+        } else if (toLocation === 'Campbelltown') {
+          setRouteSelected(Canberra_Campbelltown);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(southernWestRoute);
+        }
+      } else if (fromLocation === 'Goulburn') {
+        if (toLocation === 'Canberra') {
+          setRouteSelected(Canberra_Goulburn);
+        } else if (toLocation === 'Mittagong') {
+          setRouteSelected(Goulburn_Mittagong);
+        } else if (toLocation === 'Campbelltown') {
+          setRouteSelected(Goulburn_Campbelltown);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Goulburn_Sydney);
+        }
+      } else if (fromLocation === 'Mittagong') {
+        if (toLocation === 'Canberra') {
+          setRouteSelected(Canberra_Mittagong);
+        } else if (toLocation === 'Goulburn') {
+          setRouteSelected(Goulburn_Mittagong);
+        } else if (toLocation === 'Campbelltown') {
+          setRouteSelected(Mittagong_Campbelltown);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Mittagong_Sydney);
+        }
+      } else if (fromLocation === 'Campbelltown') {
+        if (toLocation === 'Canberra') {
+          setRouteSelected(Canberra_Campbelltown);
+        } else if (toLocation === 'Mittagong') {
+          setRouteSelected(Mittagong_Campbelltown);
+        } else if (toLocation === 'Goulburn') {
+          setRouteSelected(Goulburn_Campbelltown);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Campbelltown_Sydney);
+        }
+      } else if (fromLocation === 'Bomdaberry') {
+        if (toLocation === 'Kiama') {
+          setRouteSelected(Bomdaberry_Kiama);
+        } else if (toLocation === 'Shellharbour') {
+          setRouteSelected(Bomdaberry_Shellharbour);
+        } else if (toLocation === 'Dapto') {
+          setRouteSelected(Bomdaberry_Dapto);
+        } else if (toLocation === 'Wollongong') {
+          setRouteSelected(Bomdaberry_Wollongong);
+        } else if (toLocation === 'Sutherland') {
+          setRouteSelected(Bomdaberry_Sutherland);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(southernRoute);
+        }
+      } else if (fromLocation === 'Kiama') {
+        if (toLocation === 'Bomdaberry') {
+          setRouteSelected(Bomdaberry_Kiama);
+        } else if (toLocation === 'Shellharbour') {
+          setRouteSelected(Kiama_Shellharbour);
+        } else if (toLocation === 'Dapto') {
+          setRouteSelected(Kiama_Dapto);
+        } else if (toLocation === 'Wollongong') {
+          setRouteSelected(Kiama_Wollongong);
+        } else if (toLocation === 'Sutherland') {
+          setRouteSelected(Kiama_Sutherland);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Kiama_Sydney);
+        }
+      } else if (fromLocation === 'Shellharbour') {
+        if (toLocation === 'Bomdaberry') {
+          setRouteSelected(Bomdaberry_Shellharbour);
+        } else if (toLocation === 'Kiama') {
+          setRouteSelected(Kiama_Shellharbour);
+        } else if (toLocation === 'Dapto') {
+          setRouteSelected(Shellharbour_Dapto);
+        } else if (toLocation === 'Wollongong') {
+          setRouteSelected(Shellharbour_Wollongong);
+        } else if (toLocation === 'Sutherland') {
+          setRouteSelected(Shellharbour_Sutherland);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Shellharbour_Sydney);
+        }
+      } else if (fromLocation === 'Dapto') {
+        if (toLocation === 'Bomdaberry') {
+          setRouteSelected(Bomdaberry_Dapto);
+        } else if (toLocation === 'Shellharbour') {
+          setRouteSelected(Shellharbour_Dapto);
+        } else if (toLocation === 'Kiama') {
+          setRouteSelected(Kiama_Dapto);
+        } else if (toLocation === 'Wollongong') {
+          setRouteSelected(Dapto_Wollongong);
+        } else if (toLocation === 'Sutherland') {
+          setRouteSelected(Dapto_Sutherland);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Dapto_Sydney);
+        }
+      } else if (fromLocation === 'Wollongong') {
+        if (toLocation === 'Bomdaberry') {
+          setRouteSelected(Bomdaberry_Wollongong);
+        } else if (toLocation === 'Shellharbour') {
+          setRouteSelected(Shellharbour_Wollongong);
+        } else if (toLocation === 'Dapto') {
+          setRouteSelected(Dapto_Wollongong);
+        } else if (toLocation === 'Kiama') {
+          setRouteSelected(Kiama_Wollongong);
+        } else if (toLocation === 'Sutherland') {
+          setRouteSelected(Wollongong_Sutherland);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Wollongong_Sydney);
+        }
+      } else if (fromLocation === 'Sutherland') {
+        if (toLocation === 'Bomdaberry') {
+          setRouteSelected(Bomdaberry_Sutherland);
+        } else if (toLocation === 'Shellharbour') {
+          setRouteSelected(Shellharbour_Sutherland);
+        } else if (toLocation === 'Dapto') {
+          setRouteSelected(Dapto_Sutherland);
+        } else if (toLocation === 'Wollongong') {
+          setRouteSelected(Wollongong_Sutherland);
+        } else if (toLocation === 'Kiama') {
+          setRouteSelected(Kiama_Sutherland);
+        } else if (toLocation === 'Sydney') {
+          setRouteSelected(Sutherland_Sydney);
         }
       }
     }
