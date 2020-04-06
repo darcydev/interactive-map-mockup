@@ -3,54 +3,73 @@ export const CITIES = [
     city: 'Port Macquarie',
     latitude: -31.4307,
     longitude: 152.90633,
-    routes: ['northern-route'],
+    routes: {
+      name: 'northern-route',
+      index: 7,
+    },
   },
   {
     city: 'Taree',
     latitude: -31.911209,
     longitude: 152.46022,
-    routes: ['northern-route'],
+    routes: {
+      name: 'northern-route',
+      index: 6,
+    },
   },
   {
     city: 'Newcastle',
     latitude: -32.92667,
     longitude: 151.780014,
-    routes: ['northern-route'],
+    routes: {
+      name: 'northern-route',
+      index: 5,
+    },
   },
   {
     city: 'Lake Macquarie',
     latitude: -32.960328,
     longitude: 151.623532,
-    routes: ['northern-route'],
+    routes: {
+      name: 'northern-route',
+      index: 4,
+    },
   },
   {
     city: 'Tuggerah',
     latitude: -33.30721,
     longitude: 151.419618,
-    routes: ['northern-route'],
+    routes: {
+      name: 'northern-route',
+      index: 3,
+    },
   },
   {
     city: 'Gosford',
     latitude: -33.42695,
     longitude: 151.341871,
-    routes: ['northern-route'],
+    routes: {
+      name: 'northern-route',
+      index: 2,
+    },
   },
   {
     city: 'Epping',
     latitude: -33.772771,
     longitude: 151.081349,
-    routes: ['northern-route'],
+    routes: {
+      name: 'northern-route',
+      index: 1,
+    },
   },
   {
     city: 'Sydney',
     latitude: -33.87364,
     longitude: 151.206913,
-    routes: [
-      'northern-route',
-      'central-west-route',
-      'southern-route',
-      'southern-west-route',
-    ],
+    routes: {
+      name: 'northern-route',
+      index: 0,
+    },
   },
   {
     city: 'Parkes',
@@ -92,7 +111,7 @@ export const CITIES = [
     city: 'Campbelltown',
     latitude: -34.064999,
     longitude: 150.814163,
-    routes: ['southern-route', 'southern-west-route'],
+    routes: ['southern-west-route'],
   },
   {
     city: 'Wollongong',

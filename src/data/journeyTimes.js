@@ -26,17 +26,11 @@ const Taree_LakeMacquarie = [2.1, 0.5];
 const Taree_Tuggerah = [2.4, 1.3];
 const Taree_Gosford = [3.1, 1.5];
 const Taree_Epping = [4, 2.1];
-const Sutherland_Campbelltown = [0.3, 0.1];
 const Sutherland_Wollongong = [1, 0.3];
 const Sutherland_Dapto = [1.3, 0.4];
 const Sutherland_Shellharbour = [2, 1];
 const Sutherland_Kiama = [2.1, 1.1];
 const Sutherland_Bomdaberry = [3, 1.4];
-const Campbelltown_Wollongong = [0.5, 0.2];
-const Campbelltown_Dapto = [1, 0.3];
-const Campbelltown_Shellharbour = [1.2, 0.5];
-const Campbelltown_Kiama = [1.5, 1.2];
-const Campbelltown_Bomdaberry = [2.4, 1.5];
 const Campbelltown_Mittagong = [0.5, 0.2];
 const Campbelltown_Goulburn = [1.4, 0.5];
 const Campbelltown_Canberra = [3.1, 1.1];
@@ -179,7 +173,6 @@ export const journeyTimes = {
   },
   Sutherland: {
     Sydney: Sydney_Sutherland,
-    Campbelltown: Sutherland_Campbelltown,
     Wollongong: Sutherland_Wollongong,
     Dapto: Sutherland_Dapto,
     Shellharbour: Sutherland_Shellharbour,
@@ -188,12 +181,6 @@ export const journeyTimes = {
   },
   Campbelltown: {
     Sydney: Sydney_Campbelltown,
-    Sutherland: Sutherland_Campbelltown,
-    Wollongong: Campbelltown_Wollongong,
-    Dapto: Campbelltown_Dapto,
-    Shellharbour: Campbelltown_Shellharbour,
-    Kiama: Campbelltown_Kiama,
-    Bomdaberry: Campbelltown_Bomdaberry,
     Mittagong: Campbelltown_Mittagong,
     Goulburn: Campbelltown_Goulburn,
     Canberra: Campbelltown_Canberra,
@@ -201,7 +188,6 @@ export const journeyTimes = {
   Wollongong: {
     Sydney: Sydney_Wollongong,
     Sutherland: Sutherland_Wollongong,
-    Campbelltown: Campbelltown_Wollongong,
     Dapto: Wollongong_Dapto,
     Shellharbour: Wollongong_Shellharbour,
     Kiama: Wollongong_Kiama,
@@ -210,7 +196,6 @@ export const journeyTimes = {
   Dapto: {
     Sydney: Sydney_Dapto,
     Sutherland: Sutherland_Dapto,
-    Campbelltown: Campbelltown_Dapto,
     Wollongong: Wollongong_Dapto,
     Shellharbour: Dapto_Shellharbour,
     Kiama: Dapto_Kiama,
@@ -219,7 +204,6 @@ export const journeyTimes = {
   Shellharbour: {
     Sydney: Sydney_Shellharbour,
     Sutherland: Sutherland_Shellharbour,
-    Campbelltown: Campbelltown_Shellharbour,
     Wollongong: Wollongong_Shellharbour,
     Dapto: Dapto_Shellharbour,
     Kiama: Shellharbour_Kiama,
@@ -228,7 +212,6 @@ export const journeyTimes = {
   Kiama: {
     Sydney: Sydney_Kiama,
     Sutherland: Sutherland_Kiama,
-    Campbelltown: Campbelltown_Kiama,
     Wollongong: Wollongong_Kiama,
     Dapto: Dapto_Kiama,
     Shellharbour: Shellharbour_Kiama,
@@ -237,7 +220,6 @@ export const journeyTimes = {
   Bomdaberry: {
     Sydney: Sydney_Bombdaberry,
     Sutherland: Sutherland_Bomdaberry,
-    Campbelltown: Campbelltown_Bomdaberry,
     Wollongong: Wollongong_Bomdaberry,
     Dapto: Dapto_Bomdaberry,
     Shellharbour: Shellharbour_Bomdaberry,
@@ -245,7 +227,6 @@ export const journeyTimes = {
   },
   Mittagong: {
     Sydney: Sydney_Mittagong,
-    Campbelltown: Campbelltown_Mittagong,
     Goulburn: Mittagong_Goulburn,
     Canberra: Mittagong_Canberra,
   },
@@ -261,11 +242,4 @@ export const journeyTimes = {
     Mittagong: Mittagong_Canberra,
     Goulburn: Goulburn_Canberra,
   },
-  /*   Melbourne: {
-    Sydney: {
-      beforeTime: 3.5,
-      afterTime: 1.2,
-      route: ['big-south-route'],
-    },
-  }, */
 };

@@ -7,7 +7,7 @@ export default function Slider({ leftText, rightText, progress }) {
   return (
     <StyledSlider>
       <StyledSliderHeadings>
-        <StyledH4>{leftText}</StyledH4>
+        <h4>{leftText}</h4>
         <h3>{rightText}</h3>
       </StyledSliderHeadings>
       <ProgressBar value={progress} />
@@ -22,9 +22,16 @@ const StyledSlider = styled.div`
 const StyledSliderHeadings = styled.div`
   display: flex;
   justify-content: space-between;
-`;
 
-const StyledH4 = styled.h4`
-  align-self: center;
-  padding-bottom: 0px;
+  h4 {
+    align-self: center;
+    padding-bottom: 0px;
+    color: white;
+    font-size: 18px;
+  }
+
+  h3 {
+    color: white;
+    font-size: 20px;
+  }
 `;
