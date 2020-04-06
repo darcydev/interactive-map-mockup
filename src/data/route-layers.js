@@ -1,6 +1,7 @@
 export const northernRoute = [
   {
     name: 'northern-route',
+    visible: false,
     color: [101, 147, 245],
     path: [
       [152.90633, -31.4307],
@@ -17,21 +18,7 @@ export const northernRoute = [
 
 export const centralWestRoute = [
   {
-    name: 'southern-west-route',
-    color: [50, 168, 82],
-    path: [
-      [149.128998, -35.282001], // canberra
-      [149.72086, -34.75155],
-      [150.447991, -34.45053],
-      [150.814163, -34.064999],
-      [151.206913, -33.87364], // sydney
-    ],
-  },
-];
-
-export const southernWestRoute = [
-  {
-    name: 'southern-west-route',
+    name: 'central-west-route',
     color: [244, 128, 35],
     path: [
       [148.17485, -33.137897],
@@ -40,6 +27,20 @@ export const southernWestRoute = [
       [150.157, -33.4827],
       [150.3119, -33.7125],
       [151.206913, -33.87364],
+    ],
+  },
+];
+
+export const southernWestRoute = [
+  {
+    name: 'southern-west-route',
+    color: [50, 168, 82],
+    path: [
+      [149.128998, -35.282001], // canberra
+      [149.72086, -34.75155],
+      [150.447991, -34.45053],
+      [150.814163, -34.064999],
+      [151.206913, -33.87364], // sydney
     ],
   },
 ];

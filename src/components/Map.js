@@ -117,6 +117,8 @@ export default function Map() {
     for (let i = 0; i < CITIES.length; i++) {
       const { city, routes } = CITIES[i];
 
+      console.log(fromLocation);
+
       if (city === fromLocation) {
         if (routes.length === 1) {
           if (routes[0] === 'northern-route') setRouteSelected(northernRoute);
