@@ -12,6 +12,9 @@ const Sydney_Dapto = [1.6, 0.4];
 const Sydney_Shellharbour = [2, 1];
 const Sydney_Kiama = [2.2, 1.1];
 const Sydney_Bombdaberry = [3.1, 1.5];
+const Sydney_Mittagong = [1.1, 0.35];
+const Sydney_Goulburn = [2.2, 1];
+const Sydney_Canberra = [3.5, 1.2];
 const PortMacquarie_Taree = [0.4, 0.1];
 const PortMacquarie_Newcastle = [1.1, 0.3];
 const PortMacquarie_LakeMacquarie = [1.6, 0.45];
@@ -34,6 +37,9 @@ const Campbelltown_Dapto = [1, 0.3];
 const Campbelltown_Shellharbour = [1.2, 0.5];
 const Campbelltown_Kiama = [1.5, 1.2];
 const Campbelltown_Bomdaberry = [2.4, 1.5];
+const Campbelltown_Mittagong = [0.5, 0.2];
+const Campbelltown_Goulburn = [1.4, 0.5];
+const Campbelltown_Canberra = [3.1, 1.1];
 const Wollongong_Dapto = [0.2, 0.1];
 const Wollongong_Shellharbour = [0.3, 0.15];
 const Wollongong_Kiama = [0.4, 0.2];
@@ -44,6 +50,9 @@ const Dapto_Bomdaberry = [0.5, 0.25];
 const Shellharbour_Kiama = [0.3, 0.15];
 const Shellharbour_Bomdaberry = [0.35, 0.2];
 const Kiama_Bomdaberry = [0.25, 0.15];
+const Mittagong_Goulburn = [0.5, 0.35];
+const Mittagong_Canberra = [1.3, 0.5];
+const Goulburn_Canberra = [0.4, 0.25];
 
 export const journeyTimes = {
   'Port Macquarie': {
@@ -129,6 +138,9 @@ export const journeyTimes = {
     Shellharbour: Sydney_Shellharbour,
     Kiama: Sydney_Kiama,
     Bomdaberry: Sydney_Bombdaberry,
+    Mittagong: Sydney_Mittagong,
+    Goulburn: Sydney_Goulburn,
+    Canberra: Sydney_Canberra,
   },
   Parkes: {
     Orange: [1.2, 0.2],
@@ -182,6 +194,9 @@ export const journeyTimes = {
     Shellharbour: Campbelltown_Shellharbour,
     Kiama: Campbelltown_Kiama,
     Bomdaberry: Campbelltown_Bomdaberry,
+    Mittagong: Campbelltown_Mittagong,
+    Goulburn: Campbelltown_Goulburn,
+    Canberra: Campbelltown_Canberra,
   },
   Wollongong: {
     Sydney: Sydney_Wollongong,
@@ -227,5 +242,23 @@ export const journeyTimes = {
     Dapto: Dapto_Bomdaberry,
     Shellharbour: Shellharbour_Bomdaberry,
     Kiama: Kiama_Bomdaberry,
+  },
+  Mittagong: {
+    Sydney: Sydney_Mittagong,
+    Campbelltown: Campbelltown_Mittagong,
+    Goulburn: Mittagong_Goulburn,
+    Canberra: Mittagong_Canberra,
+  },
+  Goulburn: {
+    Sydney: Sydney_Goulburn,
+    Campbelltown: Campbelltown_Goulburn,
+    Mittagong: Mittagong_Goulburn,
+    Canberra: Goulburn_Canberra,
+  },
+  Canberra: {
+    Sydney: Sydney_Canberra,
+    Campbelltown: Campbelltown_Canberra,
+    Mittagong: Mittagong_Canberra,
+    Goulburn: Goulburn_Canberra,
   },
 };

@@ -178,6 +178,17 @@ export default function Map() {
                     [151.206913, -33.87364],
                   ],
                 },
+                {
+                  name: 'southern-west-route',
+                  color: [50, 168, 82],
+                  path: [
+                    [149.128998, -35.282001], // canberra
+                    [149.72086, -34.75155],
+                    [150.447991, -34.45053],
+                    [150.814163, -34.064999],
+                    [151.206913, -33.87364], // sydney
+                  ],
+                },
               ],
               rounded: true,
               pickable: true,
