@@ -45,7 +45,7 @@ const StyledSlider = styled.div`
 
     h3 {
       color: white;
-      font-size: 20px;
+      font-size: 19px;
     }
   }
 `;

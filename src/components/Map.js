@@ -115,9 +115,6 @@ export default function Map() {
       const nearestCity = findNearestCity(latHovered, longHovered);
 
       if (nearestCity) {
-        document.getElementById('tooltip').style.top = event.y - 130 + 'px';
-        document.getElementById('tooltip').style.left = event.x + 580 + 'px';
-
         let hoverRoutes = [];
         if (northernStations.includes(nearestCity))
           hoverRoutes.push('northern-route');
@@ -142,20 +139,27 @@ export default function Map() {
   };
 
   const onMapClicked = (event) => {
-    const longClicked = event.coordinate[0];
-    const latClicked = event.coordinate[1];
-    const nearestCity = findNearestCity(latClicked, longClicked);
+    if (event.coordinate) {
+      const longClicked = event.coordinate[0];
+      const latClicked = event.coordinate[1];
+      const nearestCity = findNearestCity(latClicked, longClicked);
 
-    if (nearestCity === fromLocation) {
-      return;
-    } else if (fromLocation === '' && toLocation === '') {
-      setFromLocation(nearestCity);
-    } else if (toLocation === '') {
-      setToLocation(nearestCity);
-    } else {
-      setFromLocation(nearestCity);
-      setToLocation('');
+      if (nearestCity === fromLocation) {
+        return;
+      } else if (fromLocation === '' && toLocation === '') {
+        setFromLocation(nearestCity);
+      } else if (toLocation === '') {
+        setToLocation(nearestCity);
+      } else {
+        setFromLocation(nearestCity);
+        setToLocation('');
+      }
     }
+  };
+
+  const clearForm = () => {
+    setFromLocation('');
+    setToLocation('');
   };
 
   const updateRouteLayer = useCallback(() => {
@@ -540,6 +544,9 @@ export default function Map() {
               reduction={timeReduction ? timeReduction : 100}
             />
           </div>
+          <button className='clear-form-btn' onClick={clearForm}>
+            Clear destinations
+          </button>
           {fromLocation && <InfoBox fromLocation={fromLocation} />}
         </StyledControlPanel>
       </div>
@@ -615,7 +622,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledControlPanel = styled.div`
-  padding: 20px;
+  padding: 20px 40px;
 
   h1,
   h5,
@@ -628,9 +635,15 @@ const StyledControlPanel = styled.div`
     font-size: 35px;
   }
 
-  button {
+  .clear-form-btn {
+    margin: 15px 0;
+    border-radius: 10px;
+    font-size: 10px;
+    background-color: rgba(100, 100, 100, 0.99);
     border: none;
-    background: inherit;
+    color: white;
+    padding: 2px;
+    width: 120px;
   }
 
   .select-bars {
@@ -652,7 +665,10 @@ const StyledSelectBarContainer = styled.div`
 `;
 
 const StyledSelect = styled(Select)`
-  font-size: 18px;
   width: 100%;
-  font-size: 12px;
+  font-size: 10px !important;
+
+  .ant-select-selector {
+    height: 28px;
+  }
 `;

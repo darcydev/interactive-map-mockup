@@ -20,7 +20,7 @@ export default function Tooltip({ toolTip }) {
               <div className='southern'>Southern route</div>
             )}
           </div>
-          <h3>{toolTip.title}</h3>
+          <h4>{toolTip.title}</h4>
         </div>
       )}
     </StyledToolTip>
@@ -28,26 +28,35 @@ export default function Tooltip({ toolTip }) {
 }
 
 const StyledToolTip = styled.div`
-  z-index: 9999;
   position: absolute;
+  right: 30px;
+  top: 30px;
+  background: white;
+  border-radius: 10px;
+  z-index: 9;
 
   .tooltip-inner {
     background: white;
-    padding: 3px;
     border-radius: 10px;
-    width: 140px;
+    width: 150px;
     line-height: 30px;
     text-align: center;
+
+    h4 {
+      font-weight: 700;
+      margin: 0;
+      padding: 0;
+    }
 
     .routes {
       color: white;
       font-size: 12px;
-      font-weight: 600;
 
       .northern,
       central-western,
       south-western,
       southern {
+        padding: 0 15px;
       }
 
       .northern {

@@ -11,3 +11,40 @@ body {
 .mapboxgl-ctrl-bottom-left {
   display: none !important;
 }
+
+.st0 {
+  fill: '#FFFFFF';
+}
+.st1 {
+  fill: #7ec7e3;
+}
+.st2 {
+  fill: none;
+}
+.st3 {
+  fill: none;
+  stroke: #253a7b;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.st0 {
+  fill: #ffffff;
+}
+.st1 {
+  fill: none;
+  stroke: #7ec7e3;
+  stroke-width: 4;
+}
+.st2 {
+  clip-path: url(#SVGID_2_);
+}
+.st3 {
+  fill: none;
+  stroke: #253a7b;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.st4 {
+  clip-path: url(#SVGID_4_);
+}

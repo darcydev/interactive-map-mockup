@@ -26,18 +26,20 @@ ProgressBar.propTypes = {
 };
 
 const OuterBar = styled.div`
-  background-color: whiteSmoke;
-  border-radius: 3px;
+  background-color: rgba(100, 100, 100, 0.99);
+  border-radius: 7px;
   box-shadow: 0 2px 3px rgba(208, 208, 208, 0.5) inset;
   width: 100%;
-  height: 10px;
+  height: 9px;
+  display: flex;
 `;
 
 const InnerBar = styled.span`
   display: block;
+  align-self: center;
   width: ${(props) => props.width}%;
-  height: 12px;
-  border-radius: 3px;
+  height: 15px;
+  border-radius: 7px;
   background-color: orange;
 
   :after {

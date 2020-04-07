@@ -1,6 +1,5 @@
 import React from 'react';
 import { Marker } from 'react-map-gl';
-import Tippy from '@tippyjs/react';
 
 export default function MarkerPin({ size, city }) {
   return (
