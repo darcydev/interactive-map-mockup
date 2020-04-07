@@ -606,7 +606,7 @@ const StyledContainer = styled.div`
         width: 48%;
 
         h5 {
-          font-size: 14px;
+          font-size: 21px;
         }
       }
     }
@@ -686,7 +686,7 @@ const StyledControlPanel = styled.div`
 
 const StyledSelect = styled(Select)`
   width: 100%;
-  font-size: 10px;
+  font-size: 15px;
 
   .ant-select-selector {
     height: 28px;

@@ -41,12 +41,12 @@ const StyledSlider = styled.div`
       align-self: center;
       padding-bottom: 0px;
       color: white;
-      font-size: 13px;
+      font-size: 16px;
     }
 
     h3 {
       color: white;
-      font-size: 19px;
+      font-size: 25px;
     }
   }
 
