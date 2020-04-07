@@ -3,6 +3,7 @@ import DeckGL from '@deck.gl/react';
 import { PathLayer } from '@deck.gl/layers';
 import { StaticMap, Marker } from 'react-map-gl';
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { Select } from 'antd';
 
 import MarkerPin from './MarkerPin';
@@ -515,7 +516,7 @@ export default function Map() {
         <StyledControlPanel>
           <h1>Travel times</h1>
           <div className='select-bars'>
-            <StyledSelectBarContainer>
+            <div className='select-bar'>
               <h5 style={{ textAlign: 'left' }}>From:</h5>
               <StyledSelect
                 value={fromLocation ? fromLocation : 'SELECT DESTINATION'}
@@ -524,8 +525,8 @@ export default function Map() {
               >
                 {convertKeysToOption(journeyTimes)}
               </StyledSelect>
-            </StyledSelectBarContainer>
-            <StyledSelectBarContainer>
+            </div>
+            <div className='select-bar'>
               <h5 style={{ textAlign: 'left' }}>To:</h5>
               <StyledSelect
                 value={toLocation ? toLocation : 'SELECT DESTINATION'}
@@ -535,7 +536,7 @@ export default function Map() {
                   ? convertKeysToOption(journeyTimes[fromLocation])
                   : null}
               </StyledSelect>
-            </StyledSelectBarContainer>
+            </div>
           </div>
           <div className='sliders'>
             <Sliders
@@ -547,7 +548,9 @@ export default function Map() {
           <button className='clear-form-btn' onClick={clearForm}>
             Clear destinations
           </button>
-          {fromLocation && <InfoBox fromLocation={fromLocation} />}
+          {fromLocation && (
+            <InfoBox className='info-box' fromLocation={fromLocation} />
+          )}
         </StyledControlPanel>
       </div>
       <div className='map'>
@@ -570,8 +573,6 @@ export default function Map() {
                 data: routeSelected,
                 rounded: true,
                 pickable: true,
-                /* autoHighlight: true,
-                highlightColor: [0, 0, 128, 128], */
                 widthMinPixels: 7,
                 getColor: (data) => data.color,
               }),
@@ -599,26 +600,46 @@ const StyledContainer = styled.div`
   .sider {
     width: 35%;
     background: #212121;
+
+    .select-bars {
+      .select-bar {
+        width: 48%;
+
+        h5 {
+          font-size: 14px;
+        }
+      }
+    }
   }
 
   .map {
     width: 65%;
   }
 
-  #sidebar {
-    z-index: 99999;
+  ${media.lessThan('700px')`
+    .sider {
+      width: 100%;
+      height: 100vh;
 
-    button {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 9;
+      .select-bars {
+        flex-direction: column;
+
+        .select-bar {
+          width: 100%;
+          padding: 10px 0;
+
+          h5 {
+            font-size: 22px;
+            margin-bottom: 0;
+          }
+        }
+      }
     }
 
-    .ant-drawer-content {
-      background: green;
+    .map {
+      display: none;
     }
-  }
+  `}
 `;
 
 const StyledControlPanel = styled.div`
@@ -637,13 +658,20 @@ const StyledControlPanel = styled.div`
 
   .clear-form-btn {
     margin: 15px 0;
-    border-radius: 10px;
+    border-radius: 15px;
     font-size: 10px;
     background-color: rgba(100, 100, 100, 0.99);
     border: none;
     color: white;
-    padding: 2px;
-    width: 120px;
+    padding: 8px;
+    width: 130px;
+
+    ${media.lessThan('700px')`
+      position: absolute;
+      bottom: 35px;
+      font-size: 18px;
+      width: 210px;
+    `}
   }
 
   .select-bars {
@@ -656,19 +684,19 @@ const StyledControlPanel = styled.div`
   }
 `;
 
-const StyledSelectBarContainer = styled.div`
-  width: 48%;
-
-  h5 {
-    font-size: 14px;
-  }
-`;
-
 const StyledSelect = styled(Select)`
   width: 100%;
-  font-size: 10px !important;
+  font-size: 10px;
 
   .ant-select-selector {
     height: 28px;
   }
+
+  ${media.lessThan('700px')`
+    font-size: 16px;
+
+    .ant-select-selector {
+      height: 50px !important;
+    }
+  `}
 `;

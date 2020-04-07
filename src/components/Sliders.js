@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 import ProgressBar from './ProgressBar';
 
 export default function Sliders({ before, after, reduction }) {
   return (
     <>
-      <StyledSlider>
+      <StyledSlider className='before'>
         <div className='headings'>
           <h4>
             Travel time <b>before</b> fastrail
@@ -15,7 +16,7 @@ export default function Sliders({ before, after, reduction }) {
         </div>
         <ProgressBar value={100} />
       </StyledSlider>
-      <StyledSlider>
+      <StyledSlider className='after'>
         <div className='headings'>
           <h4>
             Travel time <b>after</b> fastrail
@@ -48,4 +49,23 @@ const StyledSlider = styled.div`
       font-size: 19px;
     }
   }
+
+  ${media.lessThan('700px')`
+    display: flex;
+    flex-direction: column;
+
+    .headings{
+      flex-direction: column;
+      
+      h3 {
+        font-size: 36px;
+        margin-bottom: 0.3em;
+      }
+
+      h4 {
+        align-self: start;
+        font-size: 22px;
+      }
+    }
+  `}
 `;

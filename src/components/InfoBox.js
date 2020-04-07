@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 import PeopleIcon from '../icons/PeopleIcon';
 import BagIcon from '../icons/BagIcon';
@@ -53,6 +54,10 @@ const StyledContainer = styled.div`
   background: white;
   padding: 20px;
   border-radius: 15px;
+
+  ${media.lessThan('700px')`
+    display: none;
+  `}
 
   h5 {
     color: black !important;
