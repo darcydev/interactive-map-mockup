@@ -161,6 +161,7 @@ export default function Map() {
   const clearForm = () => {
     setFromLocation('');
     setToLocation('');
+    updateRouteLayer();
   };
 
   const updateRouteLayer = useCallback(() => {
