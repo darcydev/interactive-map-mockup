@@ -582,6 +582,8 @@ export default function Map() {
               latitude: -33.87364,
               longitude: 151.206913,
               zoom: 8,
+              maxZoom: 12,
+              minZoom: 4,
               bearing: 0,
               pitch: 0,
             }}
