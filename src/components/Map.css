@@ -82,6 +82,7 @@
 .sider .button-row .selected {
   background: #0151fc;
   color: white;
+  font-size: 14px;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -99,5 +100,11 @@
 @media only screen and (max-width: 900px) {
   .sider .button-row button {
     font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .sider .button-row .selected {
+    width: 240px;
   }
 }
