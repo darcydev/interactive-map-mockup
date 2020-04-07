@@ -592,10 +592,9 @@ export default function Map() {
               <p>
                 Sint dolore tempor duis laboris cillum ex non culpa non amet
                 cillum ut aute veniam. Aute dolor enim enim cupidatat velit.
-                Esse fugiat tempor ea nulla magna fugiat cillum proident
-                laboris.
+                Esse fugiat tempor.
               </p>
-              <p>
+              <p className='overview'>
                 Velit elit ex adipisicing velit elit. Ad exercitation elit
                 aliqua cupidatat magna. Occaecat non ad eiusmod velit
                 consectetur aliqua quis veniam ex labore velit. Minim in est ut
@@ -733,8 +732,7 @@ const StyledControlPanel = styled.div`
     width: 130px;
 
     ${media.lessThan('700px')`
-      position: absolute;
-      bottom: 35px;
+      position: relative;
       font-size: 18px;
       width: 210px;
     `}
@@ -748,6 +746,12 @@ const StyledControlPanel = styled.div`
   .sliders {
     padding-top: 20px;
   }
+
+  ${media.lessThan('1200px')`
+    .overview {
+      display: none;
+    }
+  `}
 `;
 
 const StyledSelect = styled(Select)`
@@ -766,16 +770,3 @@ const StyledSelect = styled(Select)`
     }
   `}
 `;
-
-{
-  /* <img
-              src='https://www.nationalparks.nsw.gov.au/-/media/npws/images/parks/sydney-harbour-national-park/neilsen-park/nielsen-park-01.jpg'
-              alt='park'
-              style={{
-                width: '100%',
-                borderRadius: 50,
-                marginTop: 68,
-                height: 310,
-              }}
-            /> */
-}

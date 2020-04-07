@@ -50,20 +50,26 @@ const StyledSlider = styled.div`
     }
   }
 
+  ${media.lessThan('1200px')`
+    .headings {
+      flex-direction: column;
+
+      h4 {
+        align-self: start;
+      }
+    }
+  `}
+
   ${media.lessThan('700px')`
     display: flex;
     flex-direction: column;
 
     .headings{
-      flex-direction: column;
-      
       h3 {
         font-size: 46px;
         margin-bottom: 0.3em;
       }
-
       h4 {
-        align-self: start;
         font-size: 22px;
       }
     }

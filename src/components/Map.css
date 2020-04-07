@@ -65,7 +65,7 @@
 }
 
 .sider .button-row button {
-  font-size: 16px;
+  font-size: 15px;
   border: none;
   background: #b3c9f8;
   border-top-left-radius: 10px;
@@ -86,18 +86,18 @@
 
 @media only screen and (max-width: 1400px) {
   .sider .button-row button {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
 @media only screen and (max-width: 1100px) {
   .sider .button-row button {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
 @media only screen and (max-width: 900px) {
   .sider .button-row button {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
