@@ -515,9 +515,19 @@ export default function Map() {
   return (
     <StyledContainer>
       <div className='sider'>
+        <div className='header'>
+          <div className='blue-line'>
+            <div className='dots'>
+              <div className='green' />
+              <div className='yellow' />
+              <div className='purple' />
+              <div className='orange' />
+            </div>
+          </div>
+        </div>
         <div className='button-row'>
           <button>Corridors</button>
-          <button>Journey Times</button>
+          <button className='selected'>Journey Times</button>
           <button>Stages</button>
         </div>
         <StyledControlPanel>
@@ -581,9 +591,8 @@ export default function Map() {
             initialViewState={{
               latitude: -33.87364,
               longitude: 151.206913,
-              zoom: 8,
-              maxZoom: 12,
-              minZoom: 4,
+              zoom: 7,
+              minZoom: 7,
               bearing: 0,
               pitch: 0,
             }}
@@ -640,7 +649,7 @@ const StyledContainer = styled.div`
 
   .sider {
     width: 35%;
-    background: whitesmoke;
+    background: #fff;
 
     .select-bars {
       .select-bar {
