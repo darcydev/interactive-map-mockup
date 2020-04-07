@@ -5,30 +5,23 @@ export default function Key() {
   return (
     <StyledContainer>
       <div className='row'>
-        <span className='dot blue' />
+        <span className='dot__blue' />
         <h5>Northern route</h5>
       </div>
       <div className='row'>
-        <span className='dot red' />
+        <span className='dot__red' />
         <h5>Southern route</h5>
       </div>
       <div className='row'>
-        <span className='dot green' />
+        <span className='dot__green' />
         <h5>Southern inland route</h5>
       </div>
       <div className='row'>
-        <span className='dot orange' />
+        <span className='dot__orange' />
         <h5>Western route</h5>
       </div>
       <div className='row'>
-        <img
-          alt='map-marker'
-          src='https://image.flaticon.com/icons/png/24/37/37134.png'
-          style={{
-            cursor: 'pointer',
-            transform: `translate(3px,-5px)`,
-          }}
-        />
+        <span className='dot__black' />
         <h5 style={{ paddingLeft: 17 }}>Station Marker</h5>
       </div>
     </StyledContainer>
@@ -61,23 +54,33 @@ const StyledContainer = styled.div`
       display: inline-block;
       vertical-align: sub;
       border-radius: 10px;
-      margin-top: 6px;
+      margin-top: 11px;
     }
 
-    .blue {
+    .dot__blue {
       background-color: #6593f5;
     }
 
-    .green {
+    .dot__green {
       background-color: green;
     }
 
-    .red {
+    .dot__red {
       background-color: red;
     }
 
-    .orange {
+    .dot__orange {
       background-color: orange;
+    }
+
+    .dot__black {
+      background-color: black;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px black;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin: 4px 0 0 3px;
     }
   }
 `;

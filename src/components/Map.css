@@ -59,7 +59,7 @@
 .sider .button-row {
   display: flex;
   justify-content: space-evenly;
-  border-bottom: 3px solid #6593f5;
+  border-bottom: 3px solid #0151fc;
   padding: 4px 0 0 0;
   padding-top: 10px;
 }

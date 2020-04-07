@@ -11,8 +11,8 @@ export const CITIES = [
   },
   {
     city: 'Newcastle',
-    latitude: -32.92667,
-    longitude: 151.779014,
+    latitude: -32.926432,
+    longitude: 151.783644,
   },
   {
     city: 'Lake Macquarie',
