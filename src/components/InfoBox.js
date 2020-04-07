@@ -36,10 +36,6 @@ export default function InfoBox({ fromLocation }) {
       </div>
       <div className='row'>
         <p>
-          Irure velit ipsum eu tempor eu. Nostrud aliquip exercitation aliquip
-          ad irure excepteur incididunt exercitation commodo sunt velit non.
-          <br />
-          <br />
           Culpa aliqua ad proident proident quis est voluptate veniam fugiat sit
           cupidatat dolore. Amet officia quis fugiat consequat. Excepteur magna
           officia consectetur nostrud.
@@ -74,6 +70,7 @@ const StyledContainer = styled.div`
     .close-btn {
       background: inherit;
       border: none;
+      padding-bottom: 0;
     }
 
     ul {
