@@ -107,6 +107,14 @@ export default function Map() {
     title: '',
     visible: false,
   });
+  const [viewport, setViewport] = useState({
+    latitude: -33.87364,
+    longitude: 151.206913,
+    zoom: 7,
+    minZoom: 7,
+    bearing: 0,
+    pitch: 0,
+  });
 
   let beforeTime, afterTime, beforeString, afterString, timeReduction;
 
@@ -571,16 +579,31 @@ export default function Map() {
               </button>
             </>
           ) : (
-            <img
-              src='https://www.nationalparks.nsw.gov.au/-/media/npws/images/parks/sydney-harbour-national-park/neilsen-park/nielsen-park-01.jpg'
-              alt='park'
-              style={{
-                width: '100%',
-                borderRadius: 50,
-                marginTop: 68,
-                height: '100%',
-              }}
-            />
+            <div className='new-text'>
+              <br />
+              <p>
+                Economic modelling shows ONE HOUR is the accepted
+                business/commute time.
+                <br />
+                <br />
+                Research shows people will travel TWO HOURS for a social
+                interaction.
+              </p>
+              <h1>Overview</h1>
+              <p>
+                Sint dolore tempor duis laboris cillum ex non culpa non amet
+                cillum ut aute veniam. Aute dolor enim enim cupidatat velit.
+                Esse fugiat tempor ea nulla magna fugiat cillum proident
+                laboris.
+              </p>
+              <p>
+                Velit elit ex adipisicing velit elit. Ad exercitation elit
+                aliqua cupidatat magna. Occaecat non ad eiusmod velit
+                consectetur aliqua quis veniam ex labore velit. Minim in est ut
+                aliqua irure sunt sunt duis aute labore magna. Ut nostrud magna
+                aliquip id commodo aliqua occaecat nulla.
+              </p>
+            </div>
           )}
         </StyledControlPanel>
       </div>
@@ -588,17 +611,11 @@ export default function Map() {
         <Tooltip toolTip={toolTip} />
         <div style={{ position: 'relative', height: '100vh' }}>
           <DeckGL
-            initialViewState={{
-              latitude: -33.87364,
-              longitude: 151.206913,
-              zoom: 7,
-              minZoom: 7,
-              bearing: 0,
-              pitch: 0,
-            }}
+            initialViewState={viewport}
             controller={true}
             onClick={onMapClicked}
             onHover={onMapHover}
+            onViewportChange={(viewport) => setViewport(viewport)}
             layers={[
               new PathLayer({
                 id: 'path-layer',
@@ -618,7 +635,7 @@ export default function Map() {
               {CITIES.map((city, i) => {
                 let color;
 
-                if (city.city === 'Sydney') color = null;
+                if (city.city === 'Sydney') color = 'black';
                 else if (northernStations.includes(city.city))
                   color = '#6593f5';
                 else if (centralWestStations.includes(city.city))
@@ -750,3 +767,16 @@ const StyledSelect = styled(Select)`
     }
   `}
 `;
+
+{
+  /* <img
+              src='https://www.nationalparks.nsw.gov.au/-/media/npws/images/parks/sydney-harbour-national-park/neilsen-park/nielsen-park-01.jpg'
+              alt='park'
+              style={{
+                width: '100%',
+                borderRadius: 50,
+                marginTop: 68,
+                height: 310,
+              }}
+            /> */
+}

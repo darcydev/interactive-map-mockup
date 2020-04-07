@@ -49,7 +49,7 @@ export default function InfoBox({ fromLocation }) {
 }
 
 const StyledContainer = styled.div`
-  margin-top: 40px;
+  margin-top: 25px;
   background: white;
   padding: 20px;
   border-radius: 15px;
