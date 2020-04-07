@@ -56,7 +56,7 @@
 .sider .button-row {
   display: flex;
   justify-content: space-evenly;
-  border-bottom: 3px solid #0151fc;
+  border-bottom: 3px solid #2ec3ff;
   padding: 4px 0 0 0;
   padding-top: 10px;
 }
@@ -76,7 +76,7 @@
 }
 
 .sider .button-row .selected {
-  background: #0151fc;
+  background: #2ec3ff;
   color: white;
   font-size: 14px;
 }
