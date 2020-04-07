@@ -5,16 +5,13 @@
 }
 
 .sider .header .blue-line {
-  background: darkblue;
-  height: 3px;
+  background: #00009a;
+  height: 5px;
   margin: auto 0;
   width: 100%;
 }
 
 .sider .header .blue-line .dots {
-  display: flex;
-  width: 40%;
-  justify-content: space-evenly;
 }
 
 .sider .blue-line .green,
@@ -32,28 +29,28 @@
   background-color: darkgreen;
   border: 3px solid #fff;
   box-shadow: 0 0 0 2px darkgreen;
-  left: 14px;
+  left: 15px;
 }
 
 .sider .blue-line .yellow {
   background-color: rgb(238, 181, 26);
   border: 3px solid #fff;
   box-shadow: 0 0 0 2px rgb(238, 181, 26);
-  left: 39px;
+  left: 45px;
 }
 
 .sider .blue-line .purple {
   background-color: rgb(61, 0, 131);
   border: 3px solid #fff;
   box-shadow: 0 0 0 2px rgb(61, 0, 131);
-  left: 64px;
+  left: 75px;
 }
 
 .sider .blue-line .orange {
   background-color: rgb(209, 84, 0);
   border: 3px solid #fff;
   box-shadow: 0 0 0 2px rgb(209, 84, 0);
-  left: 89px;
+  left: 105px;
 }
 
 .sider .button-row {
@@ -67,16 +64,15 @@
 .sider .button-row button {
   font-size: 15px;
   border: none;
-  background: #b3c9f8;
+  background: #d6efff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  margin: 0;
   padding: 5px 10px 0 10px;
-  width: 180px;
   height: 50px;
   margin: 0 1px;
-  color: #0035a7;
+  color: #1dbeff;
   font-weight: 600;
+  width: 100%;
 }
 
 .sider .button-row .selected {
