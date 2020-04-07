@@ -58,7 +58,7 @@ const StyledSlider = styled.div`
       flex-direction: column;
       
       h3 {
-        font-size: 36px;
+        font-size: 46px;
         margin-bottom: 0.3em;
       }
 
