@@ -97,6 +97,7 @@ import {
   southernStations,
 } from '../data/route-layers';
 import InfoBox from './InfoBox';
+import './Map.css';
 
 export default function Map() {
   const [fromLocation, setFromLocation] = useState('');
@@ -514,6 +515,11 @@ export default function Map() {
   return (
     <StyledContainer>
       <div className='sider'>
+        <div className='button-row'>
+          <button>Corridors</button>
+          <button>Journey Times</button>
+          <button>Stages</button>
+        </div>
         <StyledControlPanel>
           <h1>Travel times</h1>
           <div className='select-bars'>
@@ -546,11 +552,25 @@ export default function Map() {
               reduction={timeReduction ? timeReduction : 100}
             />
           </div>
-          <button className='clear-form-btn' onClick={clearForm}>
-            Clear destinations
-          </button>
-          {fromLocation && (
-            <InfoBox className='info-box' fromLocation={fromLocation} />
+
+          {fromLocation ? (
+            <>
+              <InfoBox className='info-box' fromLocation={fromLocation} />
+              <button className='clear-form-btn' onClick={clearForm}>
+                Clear destinations
+              </button>
+            </>
+          ) : (
+            <img
+              src='https://www.nationalparks.nsw.gov.au/-/media/npws/images/parks/sydney-harbour-national-park/neilsen-park/nielsen-park-01.jpg'
+              alt='park'
+              style={{
+                width: '100%',
+                borderRadius: 50,
+                marginTop: 68,
+                height: '100%',
+              }}
+            />
           )}
         </StyledControlPanel>
       </div>
@@ -576,6 +596,7 @@ export default function Map() {
                 pickable: true,
                 widthMinPixels: 7,
                 getColor: (data) => data.color,
+                getPath: (d) => d.path,
               }),
             ]}
           >
@@ -583,9 +604,28 @@ export default function Map() {
               mapStyle='mapbox://styles/mapbox/streets-v11'
               mapboxApiAccessToken={process.env.REACT_APP_MAP_GL_ACCESS_TOKEN}
             >
-              {CITIES.map((city, i) => (
-                <MarkerPin key={`${i}: ${city.name}`} size={25} city={city} />
-              ))}
+              {CITIES.map((city, i) => {
+                let color;
+
+                if (northernStations.includes(city.city)) {
+                  color = '#6593f5';
+                } else if (centralWestStations.includes(city.city)) {
+                  color = 'orange';
+                } else if (southernWestStations.includes(city.city)) {
+                  color = 'green';
+                } else if (southernStations.includes(city.city)) {
+                  color = 'red';
+                }
+
+                return (
+                  <MarkerPin
+                    key={`${i}: ${city.city}`}
+                    size={25}
+                    city={city}
+                    color={color}
+                  />
+                );
+              })}
             </StaticMap>
             <Key />
           </DeckGL>
@@ -600,7 +640,7 @@ const StyledContainer = styled.div`
 
   .sider {
     width: 35%;
-    background: #212121;
+    background: whitesmoke;
 
     .select-bars {
       .select-bar {
@@ -649,7 +689,7 @@ const StyledControlPanel = styled.div`
   h1,
   h5,
   h6 {
-    color: white;
+    color: #212121;
   }
 
   h1 {
@@ -661,7 +701,7 @@ const StyledControlPanel = styled.div`
     margin: 15px 0;
     border-radius: 15px;
     font-size: 10px;
-    background-color: rgba(100, 100, 100, 0.99);
+    background-color: #212121;
     border: none;
     color: white;
     padding: 8px;

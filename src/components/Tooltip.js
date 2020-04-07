@@ -34,11 +34,13 @@ const StyledToolTip = styled.div`
   background: white;
   border-radius: 10px;
   z-index: 9;
+  font-size: 22px;
+  width: 260px;
 
   .tooltip-inner {
     background: white;
     border-radius: 10px;
-    width: 150px;
+    width: 100%;
     line-height: 30px;
     text-align: center;
 

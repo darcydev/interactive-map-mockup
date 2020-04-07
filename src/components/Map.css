@@ -1,0 +1,36 @@
+.sider .button-row {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 3px solid #6593f5;
+  padding: 4px 0 0 0;
+}
+
+.sider .button-row button {
+  font-size: 21px;
+  border: none;
+  background: #6593f5;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 0;
+  padding: 5px 10px 0 10px;
+  width: 180px;
+  height: 100%;
+}
+
+@media only screen and (max-width: 1400px) {
+  .sider .button-row button {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .sider .button-row button {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .sider .button-row button {
+    font-size: 10px;
+  }
+}

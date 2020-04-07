@@ -40,12 +40,12 @@ const StyledSlider = styled.div`
     h4 {
       align-self: center;
       padding-bottom: 0px;
-      color: white;
+      color: #212121;
       font-size: 15px;
     }
 
     h3 {
-      color: white;
+      color: #212121;
       font-size: 22px;
     }
   }

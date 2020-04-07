@@ -1,18 +1,12 @@
 import React from 'react';
 import { Marker } from 'react-map-gl';
 
-export default function MarkerPin({ size, city }) {
+import './MarkerPin.css';
+
+export default function MarkerPin({ size, city, color = 'red' }) {
   return (
     <Marker longitude={city.longitude} latitude={city.latitude}>
-      <img
-        alt='map-marker'
-        src='https://image.flaticon.com/icons/png/24/37/37134.png'
-        style={{
-          cursor: 'pointer',
-          transform: `translate(${-size / 2}px,${-size - 7}px)`,
-          zIndex: 9999,
-        }}
-      />
+      <span style={{ backgroundColor: `${color}` }} />
     </Marker>
   );
 }

@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
-import PeopleIcon from '../icons/PeopleIcon';
-import BagIcon from '../icons/BagIcon';
-
 export default function InfoBox({ fromLocation }) {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -18,7 +15,10 @@ export default function InfoBox({ fromLocation }) {
       </div>
       <h5>POPULATION</h5>
       <div className='row'>
-        <BagIcon />
+        <img
+          src='https://image.flaticon.com/icons/svg/1063/1063299.svg'
+          alt='bag'
+        />
         <ul>
           <li>2016 population</li>
           <li>2056 expected population</li>
@@ -27,7 +27,10 @@ export default function InfoBox({ fromLocation }) {
       </div>
       <h5>EMPLOYMENT</h5>
       <div className='row'>
-        <PeopleIcon />
+        <img
+          src='https://image.flaticon.com/icons/svg/33/33308.svg'
+          alt='people'
+        />
         <ul>
           <li>2016 employment</li>
           <li>2056 expected employment</li>
@@ -67,6 +70,12 @@ const StyledContainer = styled.div`
     display: flex;
     padding: 0 0 10px 0;
 
+    ${media.lessThan('900px')`
+      img {
+        display: none
+      }
+    `}
+
     .close-btn {
       background: inherit;
       border: none;
@@ -78,12 +87,13 @@ const StyledContainer = styled.div`
     }
 
     img {
-      margin: auto;
+      margin: none;
       width: 57px;
       height: 57px;
       border: 2px solid #6593f5;
       border-radius: 50%;
       padding: 7px;
+      align-self: center;
     }
   }
 `;

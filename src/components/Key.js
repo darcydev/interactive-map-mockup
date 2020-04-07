@@ -42,6 +42,7 @@ const StyledContainer = styled.div`
   bottom: 30px;
   background: white;
   border-radius: 10px;
+  font-size: 22px;
 
   .row {
     display: flex;
