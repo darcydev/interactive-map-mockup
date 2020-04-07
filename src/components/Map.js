@@ -563,8 +563,8 @@ export default function Map() {
                 data: routeSelected,
                 rounded: true,
                 pickable: true,
-                autoHighlight: true,
-                highlightColor: [0, 0, 128, 128],
+                /* autoHighlight: true,
+                highlightColor: [0, 0, 128, 128], */
                 widthMinPixels: 7,
                 getColor: (data) => data.color,
               }),
@@ -591,7 +591,7 @@ const StyledContainer = styled.div`
 
   .sider {
     width: 35%;
-    background: #2e1800;
+    background: #212121;
   }
 
   .map {
