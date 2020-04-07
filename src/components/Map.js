@@ -599,6 +599,10 @@ export default function Map() {
                 getPath: (d) => d.path,
               }),
             ]}
+            maxBounds={[
+              [-74.04728500751165, 40.68392799015035], // Southwest coordinates
+              [-73.91058699000139, 40.87764500765852], // Northeast coordinates
+            ]}
           >
             <StaticMap
               mapStyle='mapbox://styles/mapbox/streets-v11'
@@ -607,20 +611,18 @@ export default function Map() {
               {CITIES.map((city, i) => {
                 let color;
 
-                if (northernStations.includes(city.city)) {
+                if (city.city === 'Sydney') color = null;
+                else if (northernStations.includes(city.city))
                   color = '#6593f5';
-                } else if (centralWestStations.includes(city.city)) {
+                else if (centralWestStations.includes(city.city))
                   color = 'orange';
-                } else if (southernWestStations.includes(city.city)) {
+                else if (southernWestStations.includes(city.city))
                   color = 'green';
-                } else if (southernStations.includes(city.city)) {
-                  color = 'red';
-                }
+                else if (southernStations.includes(city.city)) color = 'red';
 
                 return (
                   <MarkerPin
                     key={`${i}: ${city.city}`}
-                    size={25}
                     city={city}
                     color={color}
                   />
