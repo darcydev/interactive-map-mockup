@@ -11,4 +11,6 @@ export default function App() {
   );
 }
 
-const StyledMain = styled.main``;
+const StyledMain = styled.main`
+  min-height: 100vh;
+`;

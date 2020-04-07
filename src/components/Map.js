@@ -570,14 +570,13 @@ export default function Map() {
               reduction={timeReduction ? timeReduction : 100}
             />
           </div>
-
           {fromLocation ? (
-            <>
+            <div className='info-box-container'>
               <InfoBox className='info-box' fromLocation={fromLocation} />
               <button className='clear-form-btn' onClick={clearForm}>
                 Clear destinations
               </button>
-            </>
+            </div>
           ) : (
             <div className='new-text'>
               <br />
