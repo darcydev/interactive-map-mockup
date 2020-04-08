@@ -26,11 +26,10 @@ ProgressBar.propTypes = {
 };
 
 const OuterBar = styled.div`
-  background-color: rgba(100, 100, 100, 0.99);
+  background-color: #e7e7e7;
   border-radius: 20px;
   box-shadow: 0 2px 3px rgba(208, 208, 208, 0.5) inset;
   width: 100%;
-  height: 9px;
   display: flex;
 `;
 
