@@ -27,7 +27,7 @@ ProgressBar.propTypes = {
 
 const OuterBar = styled.div`
   background-color: rgba(100, 100, 100, 0.99);
-  border-radius: 7px;
+  border-radius: 20px;
   box-shadow: 0 2px 3px rgba(208, 208, 208, 0.5) inset;
   width: 100%;
   height: 9px;
@@ -38,8 +38,8 @@ const InnerBar = styled.span`
   display: block;
   align-self: center;
   width: ${(props) => props.width}%;
-  height: 15px;
-  border-radius: 7px;
+  height: 20px;
+  border-radius: 10px;
   background-color: orange;
 
   :after {

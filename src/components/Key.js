@@ -30,7 +30,7 @@ export default function Key() {
 
 const StyledContainer = styled.div`
   position: absolute;
-  padding: 10px;
+  padding: 27px;
   right: 30px;
   bottom: 30px;
   background: white;

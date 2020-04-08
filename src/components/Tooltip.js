@@ -47,7 +47,7 @@ const StyledToolTip = styled.div`
     h4 {
       font-weight: 700;
       margin: 0;
-      padding: 0;
+      padding: 12px 0;
     }
 
     .routes {
@@ -78,19 +78,6 @@ const StyledToolTip = styled.div`
       }
     }
   }
-
-  /*  .tooltip-inner:after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -8px;
-    width: 0;
-    height: 0;
-    border-top: 8px solid #fff;
-    border-right: 8px solid transparent;
-    border-left: 8px solid transparent;
-  } */
 
   .tooltip:hover span {
     display: block;

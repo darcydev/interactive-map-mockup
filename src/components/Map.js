@@ -526,7 +526,9 @@ export default function Map() {
         <div className='header'>
           <div className='blue-line'>
             <div className='dots'>
-              <div className='green' />
+              <div className='green'>
+                <div className='outer-circle' />
+              </div>
               <div className='yellow' />
               <div className='purple' />
               <div className='orange' />
@@ -711,21 +713,25 @@ const StyledControlPanel = styled.div`
   padding: 20px 40px;
 
   h1,
+  h2,
+  h3,
+  h4,
   h5,
-  h6 {
+  h6,
+  p {
     color: #212121;
   }
 
   h1 {
-    font-weight: 700;
-    font-size: 35px;
+    font-weight: 600;
+    font-size: 45px;
   }
 
   .clear-form-btn {
     margin: 15px 0;
     border-radius: 15px;
     font-size: 10px;
-    background-color: #212121;
+    background-color: #808080;
     border: none;
     color: white;
     padding: 8px;

@@ -35,18 +35,20 @@ const StyledSlider = styled.div`
   .headings {
     display: flex;
     justify-content: space-between;
-    padding: 0 0 10px 0;
+    padding: 0px;
 
     h4 {
       align-self: center;
       padding-bottom: 0px;
       color: #212121;
-      font-size: 15px;
+      font-size: 18px;
     }
 
     h3 {
       color: #212121;
-      font-size: 22px;
+      font-size: 30px;
+      font-weight: 400px;
+      letter-spacing: -0.02em;
     }
   }
 
@@ -70,7 +72,7 @@ const StyledSlider = styled.div`
         margin-bottom: 0.3em;
       }
       h4 {
-        font-size: 22px;
+        font-size: 18px;
       }
     }
   `}

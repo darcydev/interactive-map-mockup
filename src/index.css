@@ -12,6 +12,11 @@ body {
   display: none !important;
 }
 
+.mapboxgl-marker {
+  left: -6px !important;
+  top: -11px !important;
+}
+
 .st0 {
   fill: '#FFFFFF';
 }

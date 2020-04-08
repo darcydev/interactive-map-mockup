@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import CrossIcon from '../icons/CrossIcon';
+import BagIcon from '../icons/BagIcon';
+import PeopleIcon from '../icons/PeopleIcon';
+
+import PeopleSVG from './people.svg';
 
 export default function InfoBox({ fromLocation }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -10,15 +15,12 @@ export default function InfoBox({ fromLocation }) {
       <div className='row' style={{ justifyContent: 'space-between' }}>
         <h2>{fromLocation}</h2>
         <button className='close-btn' onClick={() => setIsOpen(false)}>
-          <b>X</b>
+          <CrossIcon />
         </button>
       </div>
       <h5>POPULATION</h5>
       <div className='row'>
-        <img
-          src='https://image.flaticon.com/icons/svg/1063/1063299.svg'
-          alt='bag'
-        />
+        <img src={require('./bag.svg')} alt='bag' />
         <ul>
           <li>2016 population</li>
           <li>2056 expected population</li>
@@ -27,10 +29,7 @@ export default function InfoBox({ fromLocation }) {
       </div>
       <h5>EMPLOYMENT</h5>
       <div className='row'>
-        <img
-          src='https://image.flaticon.com/icons/svg/33/33308.svg'
-          alt='people'
-        />
+        <img src={require('./people.svg')} alt='people' />
         <ul>
           <li>2016 employment</li>
           <li>2056 expected employment</li>
@@ -53,13 +52,16 @@ const StyledContainer = styled.div`
   background: white;
   padding: 20px;
   border-radius: 15px;
+  color: #212121;
 
   ${media.lessThan('700px')`
     display: none;
   `}
 
-  h5 {
-    color: black !important;
+  h2, 
+  h5, 
+  p {
+    color: #212121 !important;
   }
 
   h2 {
@@ -69,6 +71,11 @@ const StyledContainer = styled.div`
   .row {
     display: flex;
     padding: 0 0 10px 0;
+
+    h2,
+    p {
+      color: #212121;
+    }
 
     ${media.lessThan('900px')`
       img {
@@ -87,13 +94,7 @@ const StyledContainer = styled.div`
     }
 
     img {
-      margin: none;
-      width: 57px;
-      height: 57px;
-      border: 2px solid #6593f5;
-      border-radius: 50%;
-      padding: 7px;
-      align-self: center;
+      max-width: 75px;
     }
   }
 `;
