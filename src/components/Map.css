@@ -82,8 +82,32 @@
   font-size: 16px;
 }
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 1100px) {
+  .sider .button-row button {
+    padding: 0;
+  }
+
   .sider .button-row .selected {
-    width: 240px;
+    width: 532px;
+  }
+}
+
+@media only screen and (min-width: 940px) {
+  .sider .button-row button {
+    padding: 5px 10px 0 10px;
+  }
+
+  .sider .button-row .selected {
+    width: 532px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .sider .button-row button {
+    padding: 0;
+  }
+
+  .sider .button-row .selected {
+    width: 532px;
   }
 }

@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import CrossIcon from '../icons/CrossIcon';
-import BagIcon from '../icons/BagIcon';
-import PeopleIcon from '../icons/PeopleIcon';
-
-import PeopleSVG from './people.svg';
 
 export default function InfoBox({ fromLocation }) {
   const [isOpen, setIsOpen] = useState(true);

@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+  cursor: pointer;
+}
+
 .mapboxgl-ctrl-bottom-right,
 .mapboxgl-ctrl-bottom-left {
   display: none !important;

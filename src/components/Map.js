@@ -170,7 +170,7 @@ export default function Map() {
   const clearForm = () => {
     setFromLocation('');
     setToLocation('');
-    updateRouteLayer();
+    setRouteSelected(allRoutes);
   };
 
   const updateRouteLayer = useCallback(() => {
@@ -725,6 +725,22 @@ const StyledControlPanel = styled.div`
   h1 {
     font-weight: 600;
     font-size: 45px;
+
+    ${media.lessThan('1200px')`
+      font-size: 35px;
+    `}
+
+    ${media.lessThan('850px')`
+      font-size: 25px;
+    `}
+
+    ${media.lessThan('700px')`
+      font-size: 45px;
+    `}
+
+    ${media.lessThan('450px')`
+      font-size: 30px;
+    `}
   }
 
   .clear-form-btn {

@@ -52,7 +52,7 @@ const StyledSlider = styled.div`
     }
   }
 
-  ${media.lessThan('1200px')`
+  ${media.lessThan('1350px')`
     .headings {
       flex-direction: column;
 
