@@ -52,7 +52,7 @@ const StyledSlider = styled.div`
     }
   }
 
-  ${media.lessThan('1350px')`
+  ${media.lessThan('1600px')`
     .headings {
       flex-direction: column;
 
@@ -68,7 +68,7 @@ const StyledSlider = styled.div`
 
     .headings{
       h3 {
-        font-size: 46px;
+        font-size: 42px;
         margin-bottom: 0.3em;
       }
       h4 {
