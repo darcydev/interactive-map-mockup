@@ -1,8 +1,11 @@
+.mapboxgl-marker {
+  z-index: 9999999999999999999999999999999999999999999;
+}
+
 .mapboxgl-marker span {
   height: 15px;
   width: 15px;
   border-radius: 50%;
   display: inline-block;
-  z-index: 9;
   border: 3px solid #fff;
 }
