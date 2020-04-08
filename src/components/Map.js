@@ -124,7 +124,10 @@ export default function Map() {
       const longHovered = event.coordinate[0];
       const nearestCity = findNearestCity(latHovered, longHovered);
 
+      const page = document.getElementById('root');
+
       if (nearestCity) {
+        page.style.cursor = 'pointer'; // TODO: not working
         let hoverRoutes = [];
         if (northernStations.includes(nearestCity))
           hoverRoutes.push('northern-route');
@@ -141,6 +144,7 @@ export default function Map() {
           visible: true,
         });
       } else {
+        page.style.cursor = 'default';
         setToolTip({
           visible: false,
         });
