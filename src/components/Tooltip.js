@@ -10,10 +10,10 @@ export default function Tooltip({ toolTip }) {
             {toolTip.routes.includes('northern-route') && (
               <div className='northern'>Northern route</div>
             )}
-            {toolTip.routes.includes('central-west-route') && (
+            {toolTip.routes.includes('western-route') && (
               <div className='central-west'>Western route</div>
             )}
-            {toolTip.routes.includes('southern-west-route') && (
+            {toolTip.routes.includes('southern-inland-route') && (
               <div className='southern-west'>Southern inland route</div>
             )}
             {toolTip.routes.includes('southern-route') && (

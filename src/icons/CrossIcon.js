@@ -17,8 +17,8 @@ export default (props) => (
   >
     <defs></defs>
     <g id='Group_41_1_' transform='translate(-444.379 -1284.379)'>
-      <path id='Path_10_1_' class='st0' d='M464.7,1285.9l-18.8,18.8' />
-      <path id='Path_11_1_' class='st0' d='M445.9,1285.9l18.8,18.8' />
+      <path id='Path_10_1_' className='st0' d='M464.7,1285.9l-18.8,18.8' />
+      <path id='Path_11_1_' className='st0' d='M445.9,1285.9l18.8,18.8' />
     </g>
   </svg>
 );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
+
 import CrossIcon from '../icons/CrossIcon';
 
 export default function InfoBox({ fromLocation }) {
@@ -16,7 +17,7 @@ export default function InfoBox({ fromLocation }) {
       </div>
       <h5>POPULATION</h5>
       <div className='row'>
-        <img src={require('./bag.svg')} alt='bag' />
+        <img src={require('../icons/bag.svg')} alt='bag' />
         <ul>
           <li>2016 population</li>
           <li>2056 expected population</li>
@@ -25,7 +26,7 @@ export default function InfoBox({ fromLocation }) {
       </div>
       <h5>EMPLOYMENT</h5>
       <div className='row'>
-        <img src={require('./people.svg')} alt='people' />
+        <img src={require('../icons/people.svg')} alt='people' />
         <ul>
           <li>2016 employment</li>
           <li>2056 expected employment</li>
