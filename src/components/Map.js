@@ -11,22 +11,16 @@ import Header from './Header';
 import Sliders from './Sliders';
 import Key from './Key';
 import Tooltip from './Tooltip';
-import { findNearestCity } from '../helpers/findNearestCity';
 import { journeyTimes } from '../data/journeyTimes';
 import { CITIES } from '../data/cities';
-import { timeToString } from '../helpers/timeToString';
 import { convertKeysToOption } from '../helpers/convertKeysToOption';
 import findExactRoute from '../helpers/findExactRoute';
 import {
   allRoutes,
   northernRoute,
-  centralWestRoute,
-  southernWestRoute,
+  westernRoute,
+  southernInlandRoute,
   southernRoute,
-  northernStations,
-  centralWestStations,
-  southernWestStations,
-  southernStations,
 } from '../data/route-layers';
 
 export default function Map() {
@@ -45,7 +39,7 @@ export default function Map() {
     pitch: 0,
   });
 
-  let beforeTime, afterTime, beforeString, afterString, timeReduction;
+  let beforeTime, afterTime;
 
   const NEW_MARKERS = [];
 
@@ -59,39 +53,7 @@ export default function Map() {
     });
   }
 
-  /*   const onMapHover = (event) => {
-    if (event.coordinate) {
-      const latHovered = event.coordinate[1];
-      const longHovered = event.coordinate[0];
-      const nearestCity = findNearestCity(latHovered, longHovered);
-
-      if (nearestCity) {
-        let hoverRoutes = [];
-        if (northernStations.includes(nearestCity))
-          hoverRoutes.push('northern-route');
-        if (centralWestStations.includes(nearestCity))
-          hoverRoutes.push('central-west-route');
-        if (southernWestStations.includes(nearestCity))
-          hoverRoutes.push('southern-west-route');
-        if (southernStations.includes(nearestCity))
-          hoverRoutes.push('southern-route');
-
-        setToolTip({
-          title: nearestCity,
-          routes: hoverRoutes,
-          visible: true,
-        });
-      } else {
-        setToolTip({
-          visible: false,
-        });
-      }
-    }
-  }; */
-
-  const onNewHover = (d) => {
-    console.log(d);
-
+  const onIconHover = (d) => {
     if (d.object) {
       setToolTip({
         title: d.object.name,
@@ -106,19 +68,16 @@ export default function Map() {
   };
 
   const onMapClicked = (event) => {
-    if (event.coordinate) {
-      const longClicked = event.coordinate[0];
-      const latClicked = event.coordinate[1];
-      const nearestCity = findNearestCity(latClicked, longClicked);
+    if (event.object) {
+      const { name } = event.object;
 
-      if (nearestCity === fromLocation) {
-        return;
-      } else if (fromLocation === '' && toLocation === '') {
-        setFromLocation(nearestCity);
+      if (name === fromLocation) return;
+      else if (fromLocation === '' && toLocation === '') {
+        setFromLocation(name);
       } else if (toLocation === '') {
-        setToLocation(nearestCity);
+        setToLocation(name);
       } else {
-        setFromLocation(nearestCity);
+        setFromLocation(name);
         setToLocation('');
       }
     }
@@ -133,15 +92,14 @@ export default function Map() {
   const updateRouteLayer = useCallback(() => {
     if (fromLocation === 'Sydney') setRouteSelected(allRoutes);
     else {
-      if (northernStations.includes(fromLocation)) {
-        setRouteSelected(northernRoute);
-      } else if (centralWestStations.includes(fromLocation)) {
-        setRouteSelected(centralWestRoute);
-      } else if (southernWestStations.includes(fromLocation)) {
-        setRouteSelected(southernWestRoute);
-      } else if (southernStations.includes(fromLocation)) {
+      const ROUTES = CITIES[fromLocation].routes;
+
+      if (ROUTES.includes('northern-route')) setRouteSelected(northernRoute);
+      else if (ROUTES.includes('western-route')) setRouteSelected(westernRoute);
+      else if (ROUTES.includes('southern-inland-route'))
+        setRouteSelected(southernInlandRoute);
+      else if (ROUTES.includes('southern-route'))
         setRouteSelected(southernRoute);
-      }
     }
   }, [fromLocation]);
 
@@ -156,12 +114,8 @@ export default function Map() {
 
   if (fromLocation && toLocation && fromLocation !== toLocation) {
     if (journeyTimes[fromLocation][toLocation]) {
-      // the two selected locations are a real route, so extract the data and update the displayed layers
       beforeTime = journeyTimes[fromLocation][toLocation][0];
       afterTime = journeyTimes[fromLocation][toLocation][1];
-      beforeString = timeToString(beforeTime);
-      afterString = timeToString(afterTime);
-      timeReduction = Math.round((afterTime / beforeTime) * 100);
     }
   }
 
@@ -194,13 +148,7 @@ export default function Map() {
               </StyledSelect>
             </div>
           </div>
-          <div className='sliders'>
-            <Sliders
-              before={beforeString}
-              after={afterString}
-              reduction={timeReduction ? timeReduction : 100}
-            />
-          </div>
+          <Sliders before={beforeTime} after={afterTime} />
           {fromLocation ? (
             <div className='info-box-container'>
               <InfoBox className='info-box' fromLocation={fromLocation} />
@@ -243,7 +191,6 @@ export default function Map() {
             initialViewState={viewport}
             controller={true}
             onClick={onMapClicked}
-            /* onHover={onMapHover} */
             onViewportChange={(viewport) => setViewport(viewport)}
             layers={[
               new PathLayer({
@@ -273,35 +220,14 @@ export default function Map() {
                 getPosition: (d) => d.coordinates,
                 getSize: () => 1.5,
                 getColor: (d) => [Math.sqrt(d.exits), 140, 0],
-                onHover: (d) => onNewHover(d),
+                onHover: (d) => onIconHover(d),
               }),
             ]}
           >
             <StaticMap
               mapStyle='mapbox://styles/mapbox/streets-v11'
               mapboxApiAccessToken={process.env.REACT_APP_MAP_GL_ACCESS_TOKEN}
-            >
-              {/*               {CITIES.map((city, i) => {
-                let color;
-
-                if (city.city === 'Sydney') color = 'black';
-                else if (northernStations.includes(city.city))
-                  color = '#6593f5';
-                else if (centralWestStations.includes(city.city))
-                  color = 'orange';
-                else if (southernWestStations.includes(city.city))
-                  color = 'green';
-                else if (southernStations.includes(city.city)) color = 'red';
-
-                return (
-                  <MarkerPin
-                    key={`${i}: ${city.city}`}
-                    city={city}
-                    color={color}
-                  />
-                );
-              })} */}
-            </StaticMap>
+            />
             <Key />
           </DeckGL>
         </div>

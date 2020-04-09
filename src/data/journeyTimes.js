@@ -26,6 +26,16 @@ const Taree_LakeMacquarie = [2.1, 0.5];
 const Taree_Tuggerah = [2.4, 1.3];
 const Taree_Gosford = [3.1, 1.5];
 const Taree_Epping = [4, 2.1];
+const Newcastle_LakeMacquarie = [1, 0.3];
+const Newcastle_Tuggerah = [1, 0.3];
+const Newcastle_Gosford = [1, 0.3];
+const Newcastle_Epping = [1, 0.3];
+const LakeMacquarie_Tuggerah = [1, 0.3];
+const LakeMacquarie_Gosford = [1, 0.3];
+const LakeMacquarie_Epping = [1, 0.3];
+const Tuggerah_Gosford = [1, 0.3];
+const Tuggerah_Epping = [1, 0.3];
+const Gosford_Epping = [1, 0.3];
 const Sutherland_Wollongong = [1, 0.3];
 const Sutherland_Dapto = [1.3, 0.4];
 const Sutherland_Shellharbour = [2, 1];
@@ -70,46 +80,46 @@ export const journeyTimes = {
   Newcastle: {
     'Port Macquarie': PortMacquarie_Newcastle,
     Taree: Taree_Newcastle,
-    'Lake Macquarie': [2.5, 1.3],
-    Tuggerah: [2.5, 1.1],
-    Gosford: [2.3, 0.65],
-    Epping: [1.5, 0.4],
+    'Lake Macquarie': Newcastle_LakeMacquarie,
+    Tuggerah: Newcastle_Tuggerah,
+    Gosford: Newcastle_Gosford,
+    Epping: Newcastle_Epping,
     Sydney: Sydney_Newcastle,
   },
   'Lake Macquarie': {
     'Port Macquarie': PortMacquarie_LakeMacquarie,
     Taree: Taree_LakeMacquarie,
-    Newcastle: [2.5, 1.3],
-    Tuggerah: [2.5, 1.1],
-    Gosford: [2.3, 0.55],
-    Epping: [1.5, 0.4],
+    Newcastle: Newcastle_LakeMacquarie,
+    Tuggerah: LakeMacquarie_Tuggerah,
+    Gosford: LakeMacquarie_Gosford,
+    Epping: LakeMacquarie_Epping,
     Sydney: Sydney_LakeMacquarie,
   },
   Tuggerah: {
     'Port Macquarie': PortMacquarie_Tuggerah,
     Taree: Taree_Tuggerah,
-    Newcastle: [2.5, 1.3],
-    'Lake Macquarie': [2.5, 0.5],
-    Gosford: [2.3, 0.55],
-    Epping: [1.5, 0.4],
+    Newcastle: Newcastle_Tuggerah,
+    'Lake Macquarie': LakeMacquarie_Tuggerah,
+    Gosford: Tuggerah_Gosford,
+    Epping: Tuggerah_Epping,
     Sydney: Sydney_Tuggerah,
   },
   Gosford: {
     'Port Macquarie': PortMacquarie_Gosford,
     Taree: Taree_Gosford,
-    Newcastle: [2.5, 1.3],
-    'Lake Macquarie': [2.5, 0.5],
-    Tuggerah: [2.3, 0.55],
-    Epping: [1.5, 0.4],
+    Newcastle: Newcastle_Gosford,
+    'Lake Macquarie': LakeMacquarie_Gosford,
+    Tuggerah: Tuggerah_Gosford,
+    Epping: Gosford_Epping,
     Sydney: Sydney_Gosford,
   },
   Epping: {
     'Port Macquarie': PortMacquarie_Epping,
     Taree: Taree_Epping,
-    Newcastle: [2.5, 1.3],
-    'Lake Macquarie': [2.5, 0.5],
-    Tuggerah: [2.3, 0.55],
-    Gosford: [1.5, 0.4],
+    Newcastle: Newcastle_Epping,
+    'Lake Macquarie': LakeMacquarie_Epping,
+    Tuggerah: Tuggerah_Epping,
+    Gosford: Gosford_Epping,
     Sydney: Sydney_Epping,
   },
   Sydney: {

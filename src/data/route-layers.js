@@ -1,40 +1,5 @@
 import { CITIES } from './cities';
 
-export const northernStations = [
-  'Port Macquarie',
-  'Taree',
-  'Newcastle',
-  'Lake Macquarie',
-  'Tuggerah',
-  'Gosford',
-  'Epping',
-  'Sydney',
-];
-export const centralWestStations = [
-  'Parkes',
-  'Orange',
-  'Bathurst',
-  'Lithgow',
-  'Katoomba',
-  'Sydney',
-];
-export const southernWestStations = [
-  'Canberra',
-  'Goulburn',
-  'Mittagong',
-  'Campbelltown',
-  'Sydney',
-];
-export const southernStations = [
-  'Bomdaberry',
-  'Kiama',
-  'Shellharbour',
-  'Dapto',
-  'Wollongong',
-  'Sutherland',
-  'Sydney',
-];
-
 export const allRoutes = [
   {
     color: [101, 147, 245],
@@ -85,8 +50,8 @@ export const allRoutes = [
 ];
 
 export const northernRoute = [allRoutes[0]];
-export const centralWestRoute = [allRoutes[1]];
-export const southernWestRoute = [allRoutes[2]];
+export const westernRoute = [allRoutes[1]];
+export const southernInlandRoute = [allRoutes[2]];
 export const southernRoute = [allRoutes[3]];
 
 export const PortMacquarie_Taree = [
@@ -281,161 +246,161 @@ export const Epping_Sydney = [
 export const Parkes_Orange = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(0, 2),
+    path: westernRoute[0].path.slice(0, 2),
   },
 ];
 
 export const Parkes_Bathurst = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(0, 3),
+    path: westernRoute[0].path.slice(0, 3),
   },
 ];
 
 export const Parkes_Lithgow = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(0, 4),
+    path: westernRoute[0].path.slice(0, 4),
   },
 ];
 
 export const Parkes_Katoomba = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(0, 5),
+    path: westernRoute[0].path.slice(0, 5),
   },
 ];
 
 export const Orange_Bathurst = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(1, 3),
+    path: westernRoute[0].path.slice(1, 3),
   },
 ];
 
 export const Orange_Lithgow = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(1, 4),
+    path: westernRoute[0].path.slice(1, 4),
   },
 ];
 
 export const Orange_Katoomba = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(1, 5),
+    path: westernRoute[0].path.slice(1, 5),
   },
 ];
 
 export const Orange_Sydney = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(1, 6),
+    path: westernRoute[0].path.slice(1, 6),
   },
 ];
 
 export const Bathurst_Lithgow = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(2, 4),
+    path: westernRoute[0].path.slice(2, 4),
   },
 ];
 
 export const Bathurst_Katoomba = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(2, 5),
+    path: westernRoute[0].path.slice(2, 5),
   },
 ];
 
 export const Bathurst_Sydney = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(2, 6),
+    path: westernRoute[0].path.slice(2, 6),
   },
 ];
 
 export const Lithgow_Katoomba = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(3, 5),
+    path: westernRoute[0].path.slice(3, 5),
   },
 ];
 
 export const Lithgow_Sydney = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(3, 6),
+    path: westernRoute[0].path.slice(3, 6),
   },
 ];
 
 export const Katoomba_Sydney = [
   {
     color: [244, 128, 35],
-    path: centralWestRoute[0].path.slice(4, 6),
+    path: westernRoute[0].path.slice(4, 6),
   },
 ];
 
 export const Canberra_Goulburn = [
   {
     color: [50, 168, 82],
-    path: southernWestRoute[0].path.slice(0, 2),
+    path: southernInlandRoute[0].path.slice(0, 2),
   },
 ];
 
 export const Canberra_Mittagong = [
   {
     color: [50, 168, 82],
-    path: southernWestRoute[0].path.slice(0, 3),
+    path: southernInlandRoute[0].path.slice(0, 3),
   },
 ];
 
 export const Canberra_Campbelltown = [
   {
     color: [50, 168, 82],
-    path: southernWestRoute[0].path.slice(0, 4),
+    path: southernInlandRoute[0].path.slice(0, 4),
   },
 ];
 
 export const Goulburn_Mittagong = [
   {
     color: [50, 168, 82],
-    path: southernWestRoute[0].path.slice(1, 3),
+    path: southernInlandRoute[0].path.slice(1, 3),
   },
 ];
 
 export const Goulburn_Campbelltown = [
   {
     color: [50, 168, 82],
-    path: southernWestRoute[0].path.slice(1, 4),
+    path: southernInlandRoute[0].path.slice(1, 4),
   },
 ];
 
 export const Goulburn_Sydney = [
   {
     color: [50, 168, 82],
-    path: southernWestRoute[0].path.slice(1, 5),
+    path: southernInlandRoute[0].path.slice(1, 5),
   },
 ];
 
 export const Mittagong_Campbelltown = [
   {
     color: [50, 168, 82],
-    path: southernWestRoute[0].path.slice(2, 4),
+    path: southernInlandRoute[0].path.slice(2, 4),
   },
 ];
 
 export const Mittagong_Sydney = [
   {
     color: [50, 168, 82],
-    path: southernWestRoute[0].path.slice(2, 5),
+    path: southernInlandRoute[0].path.slice(2, 5),
   },
 ];
 
 export const Campbelltown_Sydney = [
   {
     color: [50, 168, 82],
-    path: southernWestRoute[0].path.slice(3, 5),
+    path: southernInlandRoute[0].path.slice(3, 5),
   },
 ];
 

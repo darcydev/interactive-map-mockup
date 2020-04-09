@@ -1,7 +1,7 @@
 import {
   northernRoute,
-  centralWestRoute,
-  southernWestRoute,
+  westernRoute,
+  southernInlandRoute,
   southernRoute,
   PortMacquarie_Taree,
   PortMacquarie_Newcastle,
@@ -146,7 +146,7 @@ export default function findExactRoute(fromLocation, toLocation) {
     else if (toLocation === 'Bathurst') return Parkes_Bathurst;
     else if (toLocation === 'Lithgow') return Parkes_Lithgow;
     else if (toLocation === 'Katoomba') return Parkes_Katoomba;
-    else if (toLocation === 'Sydney') return centralWestRoute;
+    else if (toLocation === 'Sydney') return westernRoute;
   } else if (fromLocation === 'Orange') {
     if (toLocation === 'Parkes') return Parkes_Orange;
     else if (toLocation === 'Bathurst') return Orange_Bathurst;
@@ -175,7 +175,7 @@ export default function findExactRoute(fromLocation, toLocation) {
     if (toLocation === 'Goulburn') return Canberra_Goulburn;
     else if (toLocation === 'Mittagong') return Canberra_Mittagong;
     else if (toLocation === 'Campbelltown') return Canberra_Campbelltown;
-    else if (toLocation === 'Sydney') return southernWestRoute;
+    else if (toLocation === 'Sydney') return southernInlandRoute;
   } else if (fromLocation === 'Goulburn') {
     if (toLocation === 'Canberra') return Canberra_Goulburn;
     else if (toLocation === 'Mittagong') return Goulburn_Mittagong;

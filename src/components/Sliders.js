@@ -4,15 +4,17 @@ import media from 'styled-media-query';
 
 import ProgressBar from './ProgressBar';
 
-export default function Sliders({ before, after, reduction }) {
+import { timeToString } from '../helpers/timeToString';
+
+export default function Sliders({ before, after }) {
   return (
-    <>
+    <StyledContainer>
       <StyledSlider className='before'>
         <div className='headings'>
           <h4>
             Travel time <b>before</b> fastrail
           </h4>
-          <h3>{before}</h3>
+          <h3>{timeToString(before)}</h3>
         </div>
         <ProgressBar value={100} />
       </StyledSlider>
@@ -21,13 +23,19 @@ export default function Sliders({ before, after, reduction }) {
           <h4>
             Travel time <b>after</b> fastrail
           </h4>
-          <h3>{after}</h3>
+          <h3>{timeToString(after)}</h3>
         </div>
-        <ProgressBar value={reduction} />
+        <ProgressBar
+          value={before && after ? Math.round((after / before) * 100) : 100}
+        />
       </StyledSlider>
-    </>
+    </StyledContainer>
   );
 }
+
+const StyledContainer = styled.div`
+  padding: 20px 0 0 0;
+`;
 
 const StyledSlider = styled.div`
   padding: 10px 0;
