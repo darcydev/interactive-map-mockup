@@ -68,18 +68,17 @@ export default function Map() {
   };
 
   const onMapClicked = (event) => {
-    if (event.object) {
-      const { name } = event.object;
+    if (!event.object) return;
+    const { name } = event.object;
 
-      if (name === fromLocation) return;
-      else if (fromLocation === '' && toLocation === '') {
-        setFromLocation(name);
-      } else if (toLocation === '') {
-        setToLocation(name);
-      } else {
-        setFromLocation(name);
-        setToLocation('');
-      }
+    if (name === fromLocation) return;
+    else if (fromLocation === '' && toLocation === '') {
+      setFromLocation(name);
+    } else if (toLocation === '') {
+      setToLocation(name);
+    } else {
+      setFromLocation(name);
+      setToLocation('');
     }
   };
 
@@ -112,11 +111,14 @@ export default function Map() {
     }
   }, [fromLocation, toLocation, updateRouteLayer]);
 
-  if (fromLocation && toLocation && fromLocation !== toLocation) {
-    if (journeyTimes[fromLocation][toLocation]) {
-      beforeTime = journeyTimes[fromLocation][toLocation][0];
-      afterTime = journeyTimes[fromLocation][toLocation][1];
-    }
+  if (
+    fromLocation &&
+    toLocation &&
+    fromLocation !== toLocation &&
+    journeyTimes[fromLocation][toLocation]
+  ) {
+    beforeTime = journeyTimes[fromLocation][toLocation][0];
+    afterTime = journeyTimes[fromLocation][toLocation][1];
   }
 
   return (
@@ -207,15 +209,11 @@ export default function Map() {
                 data: NEW_MARKERS,
                 pickable: true,
                 getIcon: (d) => ({
-                  url:
-                    'https://img.icons8.com/officel/16/000000/delete-link.png',
-                  width: 128,
-                  height: 128,
-                  anchorY: 128,
+                  url: 'https://img.icons8.com/metro/26/000000/marker.png',
+                  width: 328,
+                  height: 328,
+                  anchorY: 328,
                 }),
-                iconMapping: {
-                  marker: { x: 0, y: 0, width: 32, height: 32, mask: true },
-                },
                 sizeScale: 15,
                 getPosition: (d) => d.coordinates,
                 getSize: () => 1.5,
