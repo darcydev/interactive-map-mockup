@@ -4,7 +4,7 @@ import { PathLayer, IconLayer } from '@deck.gl/layers';
 import { StaticMap } from 'react-map-gl';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { Select } from 'antd';
+import Select from 'react-select';
 
 import InfoBox from './InfoBox';
 import Header from './Header';
@@ -107,6 +107,8 @@ export default function Map() {
       updateRouteLayer();
     } else if (fromLocation && toLocation) {
       const exactRoute = findExactRoute(fromLocation, toLocation);
+      console.log(fromLocation, toLocation);
+
       setRouteSelected(exactRoute);
     }
   }, [fromLocation, toLocation, updateRouteLayer]);
@@ -131,23 +133,23 @@ export default function Map() {
             <div className='select-bar'>
               <h5 style={{ textAlign: 'left' }}>From:</h5>
               <StyledSelect
-                value={fromLocation ? fromLocation : 'SELECT DESTINATION'}
+                defaultValue={fromLocation ? fromLocation : 'SELECT LOCATION'}
                 onFocus={() => setFromLocation('')}
-                onChange={(value) => setFromLocation(value)}
-              >
-                {convertKeysToOption(journeyTimes)}
-              </StyledSelect>
+                onChange={(e) => setFromLocation(e.value)}
+                options={convertKeysToOption(journeyTimes)}
+              />
             </div>
             <div className='select-bar'>
               <h5 style={{ textAlign: 'left' }}>To:</h5>
               <StyledSelect
-                value={toLocation ? toLocation : 'SELECT DESTINATION'}
-                onChange={(value) => setToLocation(value)}
-              >
-                {fromLocation
-                  ? convertKeysToOption(journeyTimes[fromLocation])
-                  : null}
-              </StyledSelect>
+                defaultValue={toLocation ? toLocation : 'SELECT LOCATION'}
+                onChange={(e) => setToLocation(e.value)}
+                options={
+                  fromLocation
+                    ? convertKeysToOption(journeyTimes[fromLocation])
+                    : null
+                }
+              />
             </div>
           </div>
           <Sliders before={beforeTime} after={afterTime} />
@@ -350,18 +352,13 @@ const StyledControlPanel = styled.div`
 `;
 
 const StyledSelect = styled(Select)`
-  width: 100%;
   font-size: 15px;
 
-  .ant-select-selector {
-    height: 28px;
-  }
-
   ${media.lessThan('700px')`
-    font-size: 16px;
+		font-size: 16px;
 
-    .ant-select-selector {
-      height: 50px !important;
-    }
-  `}
+		.css-yk16xz-control {
+			height: 64px;
+		}
+	`}
 `;
